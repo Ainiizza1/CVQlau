@@ -1,4 +1,5 @@
 <?php 
+require_once 'url.php'; 
 require 'function.php'; 
 if (isset($_POST["register"])) {
     if (registrasi($_POST) > 0) {
@@ -19,20 +20,20 @@ if (isset($_POST["register"])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--===============================================================================================-->  
-    <link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+    <link rel="icon" type="image/png" href="<?=$url?>assets/images/icons/favicon.ico"/>
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="<?=$url?>assets/vendor/bootstrap/css/bootstrap.min.css">
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="<?=$url?>assets/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+    <link rel="stylesheet" type="text/css" href="<?=$url?>assets/vendor/animate/animate.css">
     <!--===============================================================================================-->  
-    <link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
+    <link rel="stylesheet" type="text/css" href="<?=$url?>assets/vendor/css-hamburgers/hamburgers.min.css">
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+    <link rel="stylesheet" type="text/css" href="<?=$url?>assets/vendor/select2/select2.min.css">
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="css/util.css">
-    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="<?=$url?>assets/css/util.css">
+    <link rel="stylesheet" type="text/css" href="<?=$url?>assets/css/main.css">
     <!--===============================================================================================-->
 </head>
 <body>
@@ -40,7 +41,7 @@ if (isset($_POST["register"])) {
     <div class="container-login100">
         <div class="wrap-login100">
             <div class="login100-pic js-tilt" data-tilt>
-                <img src="images/Logo.png" alt="IMG">
+                <img src="<?=$url?>assets/images/Logo.png" alt="IMG">
             </div>
 
             <form class="login100-form validate-form" method="post">
@@ -92,21 +93,21 @@ if (isset($_POST["register"])) {
 
     
     <!--===============================================================================================-->  
-    <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+    <script src="<?=$url?>assets/vendor/jquery/jquery-3.2.1.min.js"></script>
     <!--===============================================================================================-->
-    <script src="vendor/bootstrap/js/popper.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="<?=$url?>assets/vendor/bootstrap/js/popper.js"></script>
+    <script src="<?=$url?>assets/vendor/bootstrap/js/bootstrap.min.js"></script>
     <!--===============================================================================================-->
-    <script src="vendor/select2/select2.min.js"></script>
+    <script src="<?=$url?>assets/vendor/select2/select2.min.js"></script>
     <!--===============================================================================================-->
-    <script src="vendor/tilt/tilt.jquery.min.js"></script>
+    <script src="<?=$url?>assets/vendor/tilt/tilt.jquery.min.js"></script>
     <script >
         $('.js-tilt').tilt({
             scale: 1.1
         })
     </script>
     <!--===============================================================================================-->
-    <script src="js/main.js"></script>
+    <script src="<?=$url?>assets/js/main.js"></script>
 
 </body>
 </html>
