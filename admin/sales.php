@@ -1,5 +1,9 @@
 <?php 
+session_start();
+include('cek_session.php');
   require_once('../url.php'); 
+  require_once('../function.php'); 
+
   include_once('_partials/atas.php');
   include_once('_partials/kiri.php');
 ?>

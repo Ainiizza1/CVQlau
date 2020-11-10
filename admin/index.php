@@ -1,5 +1,8 @@
 <?php 
+session_start();
+include('cek_session.php');
   require_once('../url.php'); 
+  require_once('../function.php'); 
 
   include_once('_partials/atas.php');
   include_once('_partials/kiri.php');
@@ -11,7 +14,7 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1 class="m-0 text-dark">Dashboard</h1>
+          <h1 class="m-0 text-dark">ADMIN</h1>
         </div><!-- /.col -->
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">

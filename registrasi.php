@@ -1,4 +1,5 @@
 <?php 
+session_start();
 require_once 'url.php'; 
 require 'function.php'; 
 if (isset($_POST["register"])) {
@@ -8,10 +9,16 @@ if (isset($_POST["register"])) {
                 document.location.href = 'index.php';
               </script>";
     } else {
-        echo mysql_error($conn);
+        echo mysqli_error($conn);
     }
 }
-
+if (isset($_SESSION['login'])) {
+    if ($_SESSION['level']=="admin") {
+        header("Location: admin/index.php");
+    } elseif ($_SESSION['level']=="user") {
+        header("Location: user/index.php");
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">

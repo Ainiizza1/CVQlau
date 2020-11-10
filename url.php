@@ -1,3 +1,3 @@
 <?php
-  $url = 'http://localhost/Qlau/';
+  $url = 'http://localhost/CVQlau/';
 ?>
