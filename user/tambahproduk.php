@@ -2,7 +2,7 @@
   session_start();
   include('cek_session.php');
   require_once('../url.php'); 
-  require_once('../function.php'); 
+  require_once('function_produk.php'); 
 
   include_once('_partials/atas.php');
   include_once('_partials/kiri.php');
@@ -60,19 +60,13 @@
                           <select class="form-control selectlive" name="kodeproduk" required>
                             <option selected disabled>Silahkan Dipilih</option>
                             <?php foreach ($jenisproduk as $jproduk) : ?>
-                              <option value="<?php echo $jproduk['id_jproduk'] ?>">
-                                <?php echo $jproduk['kode_jproduk'] ?> 
+                              <option value="<?php echo $jproduk['kode_jproduk'] ?>">
+                                <?php echo $jproduk['namajenis_jproduk'] ?> 
                               </option> 
                             <?php endforeach ?>
                           </select>
                         </div>
-                        <div class="form-group">
-                          <input name="kodeangkaproduk" type="hidden" class="form-control" placeholder="Kode Angka Produk" value="<?=kode_produk_berikutnya() ?>">
-                        </div>
-                        <div class="form-group">
-                          <label>KODE ANGKA PRODUK</label>
-                          <input type="text" disabled class="form-control" value="<?=kode_produk_berikutnya() ?>">
-                        </div>
+                        
                         <div class="form-group">
                           <label>NAMA PRODUK</label>
                           <input name="namaproduk" type="text" class="form-control" placeholder="Nama Produk">
@@ -92,13 +86,12 @@
                     if (isset($_POST['tambah'])) 
                     {
                       $kodeproduk = $_POST['kodeproduk'];
-                      $kodeangkaproduk = $_POST['kodeangkaproduk'];
                       $namaproduk = $_POST['namaproduk'];
                       $hargaproduk = $_POST['hargaproduk'];
-                      $kode = $kodeproduk . $kodeangkaproduk;
+                      $kode = kode_produk_berikutnya($kodeproduk);
 
                       $ambil = $conn->query("INSERT INTO t_produk (kode_produk, nama_produk, harga_produk)
-                        VALUES('$kode + $kodeangkaproduk', '$namaproduk', '$hargaproduk')");
+                        VALUES('$kode', '$namaproduk', '$hargaproduk')");
 
                       echo "<button type='button' class='btn btn-success toastrDefaultSuccess'>Data Berhasil Disimpan</button>";
                       echo "<script> location='produk.php'; </script>";

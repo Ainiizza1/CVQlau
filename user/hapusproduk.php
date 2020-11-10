@@ -2,14 +2,13 @@
   session_start();
   include('cek_session.php');
   require_once('../url.php'); 
-  require_once('../function.php'); 
+  require_once('function_produk.php'); 
 
   include_once('_partials/atas.php');
   include_once('_partials/kiri.php');
 
   $id_produk = $_GET["id"];
-
-  if (deleteproduk($id_produk) > 0 ) {
+  if (deleteproduk($id_produk)) {
     echo "<script>
     alert('data berhasil dihapus');
     document.location.href = 'produk.php';
