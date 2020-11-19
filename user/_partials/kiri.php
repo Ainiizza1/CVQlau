@@ -24,7 +24,7 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item">
-            <a href="<?=$url?>admin/index.php" class="nav-link">
+            <a href="<?=$url?>user/index.php" class="nav-link">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashboard
@@ -54,7 +54,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="<?=$url?>admin/produk_stok_awal.php" class="nav-link">
+                <a href="<?=$url?>user/produkawal.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Stok Awal Produk</p>
                 </a>
@@ -62,7 +62,7 @@
             </ul>
           </li>
           <li class="nav-item">
-            <a href="<?=$url?>admin/pengguna.php" class="nav-link">
+            <a href="<?=$url?>user/pengguna.php" class="nav-link">
               <i class="nav-icon far fa-image"></i>
               <p>
                 Data Pengguna
@@ -70,7 +70,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="<?=$url?>admin/sales.php" class="nav-link">
+            <a href="<?=$url?>user/sales.php" class="nav-link">
               <i class="nav-icon far fa-image"></i>
               <p>
                 Data Sales
@@ -78,7 +78,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="<?=$url?>admin/pelanggan.php" class="nav-link">
+            <a href="<?=$url?>user/pelanggan.php" class="nav-link">
               <i class="nav-icon far fa-image"></i>
               <p>
                 Data Pelanggan
@@ -86,7 +86,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="<?=$url?>admin/pengiriman.php" class="nav-link">
+            <a href="<?=$url?>user/pengiriman.php" class="nav-link">
               <i class="nav-icon far fa-image"></i>
               <p>
                 Data Pengiriman
@@ -94,7 +94,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="<?=$url?>admin/pemesanan.php" class="nav-link">
+            <a href="<?=$url?>user/pemesanan.php" class="nav-link">
               <i class="nav-icon far fa-image"></i>
               <p>
                 Data Pemesanan
@@ -102,7 +102,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="<?=$url?>admin/distribusi.php" class="nav-link">
+            <a href="<?=$url?>user/distribusi.php" class="nav-link">
               <i class="nav-icon far fa-image"></i>
               <p>
                 Kebutuhan Distribusi

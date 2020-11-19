@@ -58,6 +58,7 @@ function registrasi ($data) {
     $username = strtolower(stripcslashes($data["username"]));
     $password = mysqli_real_escape_string($conn, $data["password"]);
     $password2 = mysqli_real_escape_string($conn, $data["password2"]);
+    $level = mysqli_real_escape_string($conn, $data["level"]);
 
     //cek konfirmasi password
     if ($password !== $password2) {
@@ -74,7 +75,7 @@ function registrasi ($data) {
     $password = password_hash($password, PASSWORD_DEFAULT);
 
     //tambahkan user baru ke database
-    mysqli_query($conn, "INSERT INTO t_users VALUES ('','$username','$password')");
+    mysqli_query($conn, "INSERT INTO t_users VALUES ('','$username','$password','$level')");
 
     return mysqli_affected_rows($conn);
 

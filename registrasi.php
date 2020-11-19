@@ -5,9 +5,9 @@ require 'function.php';
 if (isset($_POST["register"])) {
     if (registrasi($_POST) > 0) {
         echo "<script>
-                alert('user baru berhasil ditambahkan');
-                document.location.href = 'index.php';
-              </script>";
+        alert('user baru berhasil ditambahkan');
+        document.location.href = 'index.php';
+        </script>";
     } else {
         echo mysqli_error($conn);
     }
@@ -57,7 +57,7 @@ if (isset($_SESSION['login'])) {
                 </span>
 
                 <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
-                    <input class="input100" type="text" name="username" placeholder="Username">
+                    <input class="input100" type="text" name="username" placeholder="Username" onfocus>
                     <span class="focus-input100"></span>
                     <span class="symbol-input100">
                         <i class="fa fa-envelope" aria-hidden="true"></i>
@@ -80,6 +80,20 @@ if (isset($_SESSION['login'])) {
                     </span>
                 </div>
 
+                <div class="wrap-input100 validate-input" data-validate = "Please Selected">
+                    <select class="input100" name="level" required>
+                        <option selected disabled>Silahkan Dipilih</option>
+                        <option value="Admin">Admin</option> 
+                        <option value="User">User</option> 
+                        <option value="Sales">Sales</option> 
+                        <option value="Bagian Gudang">Bagian Gudang</option> 
+                    </select>
+                    <span class="focus-input100"></span>
+                    <span class="symbol-input100">
+                        <i class="fa fa-lock" aria-hidden="true"></i>
+                    </span>
+                </div>
+
                 <div class="container-login100-form-btn">
                     <button class="login100-form-btn" type="submit" name="register">
                         Registrasi
@@ -95,10 +109,10 @@ if (isset($_SESSION['login'])) {
             </form>
         </div>
     </div>
-    
-    
 
-    
+
+
+
     <!--===============================================================================================-->  
     <script src="<?=$url?>assets/vendor/jquery/jquery-3.2.1.min.js"></script>
     <!--===============================================================================================-->

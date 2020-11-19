@@ -24,7 +24,7 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item">
-            <a href="<?=$url?>admin/index.php" class="nav-link">
+            <a href="<?=$url?>user/index.php" class="nav-link">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashboard
@@ -42,19 +42,19 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="<?=$url?>admin/produk.php" class="nav-link">
+                <a href="<?=$url?>user/produk.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Daftar Produk</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="<?=$url?>admin/produk_jenis.php" class="nav-link">
+                <a href="<?=$url?>admin/jenisproduk.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Jenis Produk</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="<?=$url?>admin/produk_stok_awal.php" class="nav-link">
+                <a href="<?=$url?>user/produkawal.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Stok Awal Produk</p>
                 </a>
@@ -62,7 +62,7 @@
             </ul>
           </li>
           <li class="nav-item">
-            <a href="<?=$url?>admin/pengguna.php" class="nav-link">
+            <a href="<?=$url?>user/pengguna.php" class="nav-link">
               <i class="nav-icon far fa-image"></i>
               <p>
                 Data Pengguna
@@ -70,7 +70,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="<?=$url?>admin/sales.php" class="nav-link">
+            <a href="<?=$url?>user/sales.php" class="nav-link">
               <i class="nav-icon far fa-image"></i>
               <p>
                 Data Sales

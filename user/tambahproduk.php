@@ -95,7 +95,9 @@
 
                       echo "<button type='button' class='btn btn-success toastrDefaultSuccess'>Data Berhasil Disimpan</button>";
                       echo "<script> location='produk.php'; </script>";
-                    } ?>
+                    } 
+
+                    ?>
 
                   </div>
                 </div>

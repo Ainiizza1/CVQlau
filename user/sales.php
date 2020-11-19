@@ -14,12 +14,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Produk</h1>
+            <h1 class="m-0 text-dark">Sales</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Produk</li>
+              <li class="breadcrumb-item active">Sales</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -39,7 +39,7 @@
               <div class="card-header">
                 <h3 class="card-title">
                   <i class="fas fa-chart-pie mr-1"></i>
-                  Halaman Produk
+                  Halaman Sales
                 </h3>
               </div><!-- /.card-header -->
               
@@ -71,7 +71,7 @@
                       </tr>
                       <?php $nomor++ ?>
                     <?php } ?>
-                  </tbody>
+                  </tbody>  
                   <tfoot>
                     <tr>
                       <th>No</th>
@@ -89,7 +89,7 @@
         <!-- /.row (main row) -->
       </div><!-- /.container-fluid -->
     </section>
-    <!-- /.content -->
+    <!-- /.content -->  
   </div>
 
   <?php include_once('_partials/bawah.php'); ?>

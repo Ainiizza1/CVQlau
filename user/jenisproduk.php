@@ -29,66 +29,67 @@
 
   	<!-- Main content -->
   	<section class="content">
-  		<div class="container-fluid">
-  			<!-- Small boxes (Stat box) -->
-  			<!-- /.row -->
-  			<!-- Main row -->
-  			<div class="row">
-  				<section class="col connectedSortable">
-  					<div class="card">
-  						<div class="card-header">
-  							<h3 class="card-title">
-  								<i class="fas fa-chart-pie mr-1"></i>
-  								Halaman Jenis Produk
-  							</h3>
-  						</div><!-- /.card-header -->
+      <div class="container-fluid">
+        <!-- Small boxes (Stat box) -->
+        <!-- /.row -->
+        <!-- Main row -->
+        <div class="row">
+          <section class="col connectedSortable">
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">
+                  <i class="fas fa-chart-pie mr-1"></i>
+                  Halaman Jenis Produk
+                </h3>
+              </div><!-- /.card-header -->
 
-  						<div class="card-body">
-  							<div class="card-body">
-  								<div class="card card-primary">
-  									<div class="card-header">
-  										<h3 class="card-title">TAMBAH PRODUK</h3>
-  									</div>
-  									<!-- /.card-header -->
-  									
-  									<!-- form start -->
-  									<form>
-  										<?php $ambil = $conn->query("SELECT * FROM t_jproduk"); ?>
-  										<?php while ($pecah = $ambil->fetch_assoc()) { ?>
+              <div class="card-body">           
+                <div class="card-body">
+                  <a class="btn btn-primary" href="tambahjenisproduk.php">Tambah Data</a><br><br>
+                  <table id="example1" class="table table-bordered table-hover">
+                    <thead>
+                      <tr>
+                        <th>No</th>
+                        <th>Kode Jenis Produk</th>
+                        <th>Nama Jenis Produk</th>
+                        <th>Aksi</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <?php $nomor=1; ?>
+                      <?php $ambil = $conn->query("SELECT * FROM t_jproduk"); ?>
+                      <?php while ($pecah = $ambil->fetch_assoc()) { ?>
+                        <tr>
+                          <td><?php echo $nomor; ?></td>
+                          <td><?php echo $pecah['kode_jproduk']; ?></td>
+                          <td><?php echo $pecah['namajenis_jproduk']; ?></td>
+                          <td>
+                            <a href="hapusjenisproduk.php?id=<?= $pecah['id_jproduk']; ?>" class="btn-danger btn">Hapus</a>
+                            <a href="ubahjenisproduk.php?id=<?= $pecah['id_jproduk']; ?>" class="btn btn-warning">Ubah</a>
+                          </td>
+                        </tr>
+                        <?php $nomor++ ?>
+                      <?php } ?>
+                    </tbody>
+                    <tfoot>
+                      <tr>
+                        <th>No</th>
+                        <th>Kode Produk</th>
+                        <th>Nama Produk</th>
+                        <th>Aksi</th> 
+                      </tr>
+                    </tfoot>
+                  </table>
+                </div>
 
-  											<div class="card-body">
-  												<div class="form-group">
-  													<label>KODE PRODUK</label>
-  													<input name="kodeproduk" type="text" class="form-control" placeholder="Kode Produk">
-  												</div>
-  												<div class="form-group">
-  													<label>NAMA PRODUK</label>
-  													<input name="namaproduk" type="text" class="form-control" placeholder="Nama Produk">
-  												</div>
-  												<div class="form-group">
-  													<label>HARGA PRODUK</label>
-  													<input name="hargaproduk" type="text" class="form-control" placeholder="Harga Produk">
-  												</div>  
-  											</div>
-  											<!-- /.card-body -->
-
-  											<div class="card-footer">
-  												<button type="submit" class="btn btn-primary">Submit</button>
-  											</div>
-  										<?php } ?>
-  									</form>
-
-  								</div>
-  							</div>
-
-  						</div><!-- /.card-body -->
-  					</div>
-  				</section>
-  			</div>
-  			<!-- /.row (main row) -->
-  		</div><!-- /.container-fluid -->
-  	</section>
-  	<!-- /.content -->
+              </div><!-- /.card-body -->
+            </div>
+          </section>
+        </div>
+        <!-- /.row (main row) -->
+      </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
   </div>
   <?php include_once('_partials/bawah.php'); ?>
 

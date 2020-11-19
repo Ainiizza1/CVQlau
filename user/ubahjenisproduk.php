@@ -8,34 +8,34 @@
   include_once('_partials/kiri.php');
 
   
-  $id_produk = $_GET["id"];
+  $id_jproduk = $_GET["id"];
 
-  $result = mysqli_query($conn,"SELECT * FROM t_produk WHERE id_produk=$id_produk");
-  $produk = mysqli_fetch_assoc($result);
+  $result = mysqli_query($conn,"SELECT * FROM t_jproduk WHERE id_jproduk=$id_jproduk");
+  $jenisproduk = mysqli_fetch_assoc($result);
   // var_dump($produk);
   
   if (isset($_POST['ubah'])) 
   {
     $data = [
-      'id_produk'=>$id_produk,
-      'kode_produk'=>$_POST['kodeproduk'],
-      'nama_produk'=>$_POST['namaproduk'],
-      'harga_produk'=>$_POST['hargaproduk']
+      'id_jproduk'=>$id_jproduk,
+      'kode_jproduk'=>$_POST['kodejproduk'],
+      'namajenis_jproduk'=>$_POST['namajproduk']
     ];
     // var_dump($data);die();  
-    if (ubahproduk($data) > 0) {
+
+    if (ubahjproduk($data) > 0) {
       echo "<script>
       alert('data berhasil diubah');
-      document.location.href = 'produk.php';
+      document.location.href = 'jenisproduk.php';
       </script>";
     } else {
       echo "<script>
       alert('data gagal diubah');
-      document.location.href = 'produk.php';
+      document.location.href = 'jenisproduk.php';
       </script>";
     }
 
-  } 
+  }  
 
 
   ?>
@@ -46,12 +46,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Ubah Produk</h1>
+            <h1 class="m-0 text-dark">Ubah Jenis Produk</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="produk.php">Home</a></li>
-              <li class="breadcrumb-item active">Ubah Produk</li>
+              <li class="breadcrumb-item active">Ubah Jenis Produk</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -69,17 +69,14 @@
           <section class="col connectedSortable">
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">
-                  <i class="fas fa-chart-pie mr-1"></i>
-                  Halaman Ubah Produk
-                </h3>
+                <h3 class="card-title"><i class="fas fa-chart-pie mr-1"></i>Halaman Ubah Jenis Produk</h3>
               </div><!-- /.card-header -->
 
               <div class="card-body">
                 <div class="card-body">
                   <div class="card card-primary">
                     <div class="card-header">
-                      <h3 class="card-title">UBAH PRODUK</h3>
+                      <h3 class="card-title">UBAH JENIS PRODUK</h3>
                     </div>
                     <!-- /.card-header -->
                     
@@ -89,17 +86,13 @@
 
                         <div class="form-group">
                           <label>KODE PRODUK</label>
-                          <input name="kodeproduk" type="text" class="form-control" placeholder="Kode Produk" value="<?= $produk['kode_produk'] ?>">
+                          <input name="kodejproduk" type="text" class="form-control" value="<?= $jenisproduk['kode_jproduk'] ?>">
                         </div>
                         
                         <div class="form-group">
                           <label>NAMA PRODUK</label>
-                          <input name="namaproduk" type="text" class="form-control" placeholder="Nama Produk" value="<?= $produk["nama_produk"]; ?>">
+                          <input name="namajproduk" type="text" class="form-control" value="<?= $jenisproduk['namajenis_jproduk'] ?>">
                         </div>
-                        <div class="form-group">
-                          <label>HARGA PRODUK</label>
-                          <input name="hargaproduk" type="text" class="form-control" placeholder="Harga Produk" value="<?= $produk["harga_produk"]; ?>">
-                        </div>  
                       </div>
                       <!-- /.card-body -->
                       <div class="card-footer">
