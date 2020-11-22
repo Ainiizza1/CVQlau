@@ -31,6 +31,7 @@ function login()
         if (password_verify($password, $row["password"])) {
             //set session
             $_SESSION["login"] = true;
+            $_SESSION['id'] = $row['id'];
             $_SESSION['username'] = $row['username'];
             $_SESSION['level'] = $row['level'];
             
@@ -38,13 +39,13 @@ function login()
                 header("Location: admin/index.php");
             } elseif ($_SESSION['level']=="user") {
                 header("Location: user/index.php");
+            } elseif ($_SESSION['level']=="keuangan") {
+                header("Location: keuangan/index.php");
+            } elseif ($_SESSION['level']=="sales") {
+                header("Location: sales/index.php");
+            } elseif ($_SESSION['level']=="gudang") {
+                header("Location: gudang/index.php");
             }
-            // //cek remember me
-            // if (isset($_POST["remember"])) {
-            //     //buat cookie
-
-            //     setcookie('login', 'true', time() + 60);
-            // }
             exit(); 
         }
     }

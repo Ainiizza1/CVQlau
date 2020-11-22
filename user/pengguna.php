@@ -59,13 +59,15 @@ include_once('_partials/kiri.php');
 									<tbody>
 										<?php $nomor=1; ?>
 										<?php $ambil = $conn->query("SELECT * FROM t_users"); ?>
-										<?php while ($pecah = $ambil->fetch_assoc()) { ?>
+										<?php while ($pecah = $ambil->fetch_assoc()) {
+											$badge = ($pecah['status']=="1")? 'badge-success':'badge-danger' ;
+										 ?>
 											<tr>
 												<td><?php echo $nomor; ?></td>
-												<td><?php echo $pecah['username']; ?></td>
 												<td><?php echo $pecah['nama']; ?></td>
+												<td><?php echo $pecah['username']; ?></td>
 												<td><?php echo $pecah['level']; ?></td>
-												<td><?php echo ($pecah['status']=="1")?"aktif":"tidak aktif"; ?></td>
+												<td class="project-state"><span class="badge <?=$badge?>"><?php echo ($pecah['status']=="1")?"Aktif":"Tidak Aktif"; ?></span></td>
 												<td>
 													<a href="hapuspengguna.php?id=<?= $pecah['id']; ?>" class="btn-danger btn">Hapus</a>
 													<a href="ubahpengguna.php?id=<?= $pecah['id']; ?>" class="btn btn-warning">Ubah</a>

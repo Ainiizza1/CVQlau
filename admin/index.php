@@ -1,11 +1,11 @@
 <?php 
 session_start();
 include('cek_session.php');
-  require_once('../url.php'); 
-  require_once('../function.php'); 
+require_once('../url.php'); 
+require_once('../function.php'); 
 
-  include_once('_partials/atas.php');
-  include_once('_partials/kiri.php');
+include_once('_partials/atas.php');
+include_once('_partials/kiri.php');
 ?>
 
 <div class="content-wrapper">
@@ -18,7 +18,7 @@ include('cek_session.php');
         </div><!-- /.col -->
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item"><a href="<?=$url?>admin/index.php">Home</a></li>
             <li class="breadcrumb-item active">Dashboard v1</li>
           </ol>
         </div><!-- /.col -->
@@ -107,7 +107,7 @@ include('cek_session.php');
               </h3>
             </div><!-- /.card-header -->
             <div class="card-body">
-              
+
             </div><!-- /.card-body -->
           </div>
           <!-- /.card -->

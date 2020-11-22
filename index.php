@@ -7,6 +7,12 @@ if (isset($_SESSION['login'])) {
         header("Location: admin/index.php");
     } elseif ($_SESSION['level']=="user") {
         header("Location: user/index.php");
+    } elseif ($_SESSION['level']=="keuangan") {
+        header("Location: keuangan/index.php");
+    } elseif ($_SESSION['level']=="sales") {
+        header("Location: sales/index.php");
+    } elseif ($_SESSION['level']=="gudang") {
+        header("Location: gudang/index.php");
     }
 }
 if (isset($_POST["login"])) {

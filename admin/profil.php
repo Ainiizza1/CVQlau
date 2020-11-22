@@ -1,11 +1,13 @@
 <?php 
 session_start();
 include('cek_session.php');
-  require_once('../url.php'); 
-  require_once('../function.php'); 
+require_once('../url.php'); 
+require_once('function_profil.php'); 
 
-  include_once('_partials/atas.php');
-  include_once('_partials/kiri.php');
+include_once('_partials/atas.php');
+include_once('_partials/kiri.php');
+
+$profil = profil_pribadi();
 ?>
 
 <div class="content-wrapper">
@@ -14,12 +16,12 @@ include('cek_session.php');
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1 class="m-0 text-dark">PROFIL</h1>
+          <h1 class="m-0 text-dark">Profil</h1>
         </div><!-- /.col -->
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item active">PROFIL</li>
+            <li class="breadcrumb-item active">Profil</li>
           </ol>
         </div><!-- /.col -->
       </div><!-- /.row -->
@@ -39,11 +41,35 @@ include('cek_session.php');
             <div class="card-header">
               <h3 class="card-title">
                 <i class="fas fa-chart-pie mr-1"></i>
-                Halaman Kebutuhan PROFIL
+                Halaman Kebutuhan Profil
               </h3>
             </div><!-- /.card-header -->
             <div class="card-body">
-              Ini Body Halaman Kebutuhan PROFIL
+              <div class="col-md-3">
+                <!-- <div class="thumbnail">
+                  <img src="assets/dist/img/<?php echo $profil['foto']; ?>">
+                  <h3>Nama : <?=$profil['nama'];?> <br></h3>
+                  <h3>Username : <?=$profil['username'];?> <br></h3>
+                  <h3>Password : <?=$profil['password'];?> <br></h3></div>
+                </div> -->
+                <div class="card card-primary card-outline">
+                  <div class="card-body box-profile">
+                    <div class="text-center">
+                      <img class="profile-user-img img-fluid img-circle" src="assets/dist/img/<?php echo $profil['foto']; ?>" alt="User profile picture">
+                    </div>
+                    <h3 class="profile-username text-center"><?=$profil['nama'];?></h3>
+                    <p class="text-muted text-center"><?=$profil['level'];?></p>
+                    <ul class="list-group list-group-unbordered mb-3">
+                      <li class="list-group-item">
+                        <b>Username</b> <a class="float-right"><?=$profil['username'];?></a>
+                      </li>
+                    </ul>
+                    <a href="ubahprofil.php" class="btn btn-primary btn-block"><b>Ubah Data</b></a>
+                    <a href="ubahpassword.php" class="btn btn-primary btn-block"><b>Ubah Password</b></a>
+                  </div>
+                  <!-- /.card-body -->
+                </div>
+              </div>
             </div><!-- /.card-body -->
           </div>
         </section>

@@ -17,6 +17,12 @@ if (isset($_SESSION['login'])) {
         header("Location: admin/index.php");
     } elseif ($_SESSION['level']=="user") {
         header("Location: user/index.php");
+    } elseif ($_SESSION['level']=="keuangan") {
+        header("Location: keuangan/index.php");
+    } elseif ($_SESSION['level']=="sales") {
+        header("Location: sales/index.php");
+    } elseif ($_SESSION['level']=="gudang") {
+        header("Location: gudang/index.php");
     }
 }
 ?>
@@ -83,10 +89,10 @@ if (isset($_SESSION['login'])) {
                 <div class="wrap-input100 validate-input" data-validate = "Please Selected">
                     <select class="input100" name="level" required>
                         <option selected disabled>Silahkan Dipilih</option>
-                        <option value="Admin">Admin</option> 
-                        <option value="User">User</option> 
-                        <option value="Sales">Sales</option> 
-                        <option value="Bagian Gudang">Bagian Gudang</option> 
+                        <option value="admin">Admin</option> 
+                        <option value="user">User</option> 
+                        <option value="sales">Sales</option> 
+                        <option value="gudang">Bagian Gudang</option> 
                     </select>
                     <span class="focus-input100"></span>
                     <span class="symbol-input100">
