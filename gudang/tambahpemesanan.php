@@ -124,18 +124,16 @@
 
                       for ($i=0; $i < $jumlah_data ; $i++) { 
                         $tgl_pesan = date("Y-m-d h:i:sa");
-                        $id_produk = $_POST['namaproduk'][$i];
+                        $id_produk = $_POST['id_produk'][$i];
                         $status = "Belum Dikonfirmasi";
                         $jumlah = $_POST['jumlah'][$i];
 
-                        $ambil = $conn->query("INSERT INTO t_pemesanan (tgl_pemesanan,status)
-                          VALUES($tgl_pesan, '$status')");
+                        $ambil = $conn->query("INSERT INTO t_pemesanan (tgl_pemesanan,status,id_produk)
+                          VALUES($tgl_pesan, '$status', '$id_produk')");
 
-                          echo "$tgl_pesan";
-                          echo "$status";
                       }
-                      var_dump(mysql_error());die();
-                      echo "<button type='button' class='btn btn-success toastrDefaultSuccess'>Data Pemesanan Berhasil Ditambahkan</button>";
+                      
+                      echo "<button type='button' class='btn btn-success toastrDefaultSuccess'>Data Kendaraan Berhasil Ditambahkan</button>";
                       echo "<script> location='tambahpemesanan.php'; </script>";
                     } 
 

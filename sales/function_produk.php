@@ -3,23 +3,13 @@ include "../koneksi.php";
 
 
 //data jenis produk
-$result = mysqli_query($conn, "SELECT * FROM t_jproduk");
+$result = mysqli_query($conn, "SELECT * FROM t_jproduk INNER JOIN t_produk USING (id_jproduk)");
 
 $jenisproduk = array();
 while ($row = mysqli_fetch_assoc($result)) {
     $jenisproduk[]=$row;
 }
 return mysqli_affected_rows($conn);
-
-//data jenis produk
-$result = mysqli_query($conn, "SELECT * FROM t_produk");
-
-$dataproduk = array();
-while ($row = mysqli_fetch_assoc($result)) {
-    $dataproduk[]=$row;
-}
-return mysqli_affected_rows($conn);
-
 
 function kode_produk_berikutnya($jenis)
 {
@@ -56,6 +46,12 @@ function deleteproduk($id_produk) {
     return $result;
 }
 
+function deletekendaraan($id_kendaraan) {
+    global $conn;
+    $result = mysqli_query($conn, "DELETE FROM t_kendaraan WHERE id_kendaraan = $id_kendaraan");
+    return $result;
+}
+
 function ubahproduk(array $data) {
     global $conn;
     // var_dump($data['harga_produk']);die();
@@ -67,6 +63,13 @@ function ubahpengguna(array $data) {
     global $conn;
     // var_dump($data['harga_produk']);die();
     $result = mysqli_query($conn, "UPDATE t_users SET username='".$data['username']."', password='".$data['password']."', level='".$data['level']."', nama='".$data['nama']."', status='".$data['status']."' WHERE id = '".$data['id']."'");
+    return $result;
+}
+
+function ubahkendaraan(array $data) {
+    global $conn;
+    // var_dump($data['harga_produk']);die();
+    $result = mysqli_query($conn, "UPDATE t_kendaraan SET nama_kendaraan='".$data['nama_kendaraan']."', plat='".$data['plat']."', warna='".$data['warna']."' WHERE id_kendaraan = '".$data['id_kendaraan']."'");
     return $result;
 }
 

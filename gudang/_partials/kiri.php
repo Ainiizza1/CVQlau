@@ -53,19 +53,13 @@
                   <p>Jenis Produk</p>
                 </a>
               </li>
-              <li class="nav-item">
-                <a href="<?=$url?>gudang/produkawal.php" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Stok Awal Produk</p>
-                </a>
-              </li>
             </ul>
           </li>
           <li class="nav-item">
-            <a href="<?=$url?>gudang/pengadaan.php" class="nav-link">
+            <a href="<?=$url?>gudang/penjualan.php" class="nav-link">
               <i class="nav-icon far fa-image"></i>
               <p>
-                Data Pengadaan
+                Data Penjualan
               </p>
             </a>
           </li>
@@ -78,10 +72,18 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="<?=$url?>gudang/pemesanan.php" class="nav-link">
+            <a href="<?=$url?>gudang/tambahpemesanan.php" class="nav-link">
               <i class="nav-icon far fa-image"></i>
               <p>
                 Data Pemesanan
+              </p>
+            </a>
+          </li>
+                    <li class="nav-item">
+            <a href="<?=$url?>gudang/kendaraan.php" class="nav-link">
+              <i class="nav-icon far fa-image"></i>
+              <p>
+                Data Kendaraan
               </p>
             </a>
           </li>

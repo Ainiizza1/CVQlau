@@ -62,7 +62,7 @@
             </ul>
           </li>
           <li class="nav-item">
-            <a href="<?=$url?>sales/pemesanan.php" class="nav-link">
+            <a href="<?=$url?>sales/tambahpemesanan.php" class="nav-link">
               <i class="nav-icon far fa-image"></i>
               <p>
                 Data Pemesanan
