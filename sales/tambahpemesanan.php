@@ -121,22 +121,30 @@
                       // var_dump($_POST);die();
                       $jumlah_data = count($_POST['namaproduk']);
                       // var_dump($jumlah_data);die();
+                      $id_sales = $_SESSION['id'];
+                      // var_dump($id_sales);
+                      $tgl_pesan = date("Y-m-d h:i:sa");
+                      $status = "Belum Dikonfirmasi";
+                      $ambil = $conn->query("INSERT INTO t_pemesanan (id_sales,tgl_pemesanan,status)
+                        VALUES('$id_sales','$tgl_pesan', '$status')");
+                      if ($ambil == true) {                        
+                        for ($i=0; $i < $jumlah_data ; $i++) { 
+                          $namaproduk = $_POST['namaproduk'][$i];
+                          $jumlah = $_POST['jumlah'][$i];
 
-                      for ($i=0; $i < $jumlah_data ; $i++) { 
-                        $tgl_pesan = date("Y-m-d h:i:sa");
-                        $id_produk = $_POST['namaproduk'][$i];
-                        $status = "Belum Dikonfirmasi";
-                        $jumlah = $_POST['jumlah'][$i];
-
-                        $ambil = $conn->query("INSERT INTO t_pemesanan (tgl_pemesanan,status)
-                          VALUES($tgl_pesan, '$status')");
-
-                          echo "$tgl_pesan";
-                          echo "$status";
+                          $ambil = $conn->query("INSERT INTO t_detail_pemesanan (id_produk,qty_ambil)
+                            VALUES('$namaproduk','$jumlah')");
+                          if ($ambil==false) {
+                            echo "Error Detail : ". mysqli_error($conn);
+                          }
+                        }
+                      } else {
+                        echo "Error : ". mysqli_error($conn);
                       }
-                      var_dump(mysql_error());die();
-                      echo "<button type='button' class='btn btn-success toastrDefaultSuccess'>Data Pemesanan Berhasil Ditambahkan</button>";
-                      echo "<script> location='tambahpemesanan.php'; </script>";
+
+                      // var_dump(mysql_error());die();
+                      // echo "<button type='button' class='btn btn-success toastrDefaultSuccess'>Data Pemesanan Berhasil Ditambahkan</button>";
+                      // echo "<script> location='tambahpemesanan.php'; </script>";
                     } 
 
                     ?>
