@@ -63,16 +63,16 @@
               </p>
             </a>
           </li>
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <a href="<?=$url?>gudang/pengiriman.php" class="nav-link">
               <i class="nav-icon far fa-image"></i>
               <p>
                 Data Pengiriman
               </p>
             </a>
-          </li>
+          </li> -->
           <li class="nav-item">
-            <a href="<?=$url?>gudang/tambahpemesanan.php" class="nav-link">
+            <a href="<?=$url?>gudang/pemesanan.php" class="nav-link">
               <i class="nav-icon far fa-image"></i>
               <p>
                 Data Pemesanan

@@ -1,8 +1,8 @@
-  <?php 
+  <?php
   session_start();
   include('cek_session.php');
-  require_once('../url.php'); 
-  require_once('function_produk.php'); 
+  require_once('../url.php');
+  require_once('function_produk.php');
 
   include_once('_partials/atas.php');
   include_once('_partials/kiri.php');
@@ -39,20 +39,104 @@
               <div class="card-header">
                 <h3 class="card-title">
                   <i class="fas fa-chart-pie mr-1"></i>
-                  Halaman Pemesanan
+                  Halaman Pemesanan Sales
                 </h3>
               </div><!-- /.card-header -->
               <div class="card-body">
-                <a class="btn btn-primary" href="tambahpemesanan.php">Tambah Data</a><br><br>
+                <table id="example1" class="table table-bordered table-hover">
+                  <thead>
+                    <tr>
+                      <th>No</th>
+                      <th>Tanggal</th>
+                      <th>Nama Pemesan</th>
+                      <th>Status</th>
+                      <th>Aksi</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <?php $nomor = 1; ?>
+                    <?php $ambil = $conn->query("SELECT * FROM t_pemesanan JOIN t_users ON t_pemesanan.id_sales = t_users.id JOIN t_sales ON t_sales.id_user = t_users.id WHERE level='sales'"); ?>
+                    <?php while ($pecah = $ambil->fetch_assoc()) {
+                      if ($pecah['ket_status'] == null) {
+                        $status_pemesanan = "Belum Dikonfirmasi Keuangan";
+                        $button_konfirmasi = "";
+                      } else if ($pecah['ket_status'] == "keuangan") {
+                        $status_pemesanan = "Sudah Dikonfirmasi Keuangan";
+                        $button_konfirmasi = "<a href='konfirmasi_pemesanan.php?id=" . $pecah['id_pemesanan'] . "' class='btn-success btn'>Konfirmasi</a>";
+                      } else if ($pecah['ket_status'] == "gudang") {
+                        $status_pemesanan = "Telah Dikonfirmasi";
+                        $button_konfirmasi = "";
+                      }
+                    ?>
+                      <tr>
+                        <td><?php echo $nomor; ?></td>
+                        <td><?php echo date('d-m-Y', strtotime($pecah['tgl_pemesanan'])); ?></td>
+                        <td><?php echo $pecah['nama_sales']; ?></td>
+                        <td><?php echo $status_pemesanan; ?></td>
+                        <td>
+                          <a href="detailpemesanan.php?id=<?= $pecah['id_pemesanan']; ?>" class="btn-primary btn">Detail</a>
+                          <?= $button_konfirmasi; ?>
+                        </td>
+                      </tr>
+                      <?php $nomor++ ?>
+                    <?php } ?>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">
+                  <i class="fas fa-chart-pie mr-1"></i>
+                  Halaman Pemesanan Pelanggan
+                </h3>
+              </div><!-- /.card-header -->
+              <div class="card-body">
+                <table id="example2" class="table table-bordered table-hover">
+                  <thead>
+                    <tr>
+                      <th>No</th>
+                      <th>Tanggal</th>
+                      <th>Nama Pemesan</th>
+                      <th>Status</th>
+                      <th>Aksi</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <?php $nomor = 1; ?>
+                    <?php $ambil = $conn->query("SELECT * FROM t_pemesanan JOIN t_users ON t_pemesanan.id_sales = t_users.id JOIN t_pelanggan ON t_pelanggan.id_user = t_users.id"); ?>
+                    <?php while ($pecah = $ambil->fetch_assoc()) {
+                      if ($pecah['ket_status'] == null) {
+                        $status_pemesanan = "Belum Dikonfirmasi Keuangan";
+                        $button_konfirmasi = "";
+                      } else if ($pecah['ket_status'] == "keuangan") {
+                        $status_pemesanan = "Sudah Dikonfirmasi Keuangan";
+                        $button_konfirmasi = "<a href='konfirmasi_pemesanan.php?id=" . $pecah['id_pemesanan'] . "' class='btn-success btn'>Konfirmasi</a>";
+                      } else if ($pecah['ket_status'] == "gudang") {
+                        $status_pemesanan = "Telah Dikonfirmasi";
+                        $button_konfirmasi = "";
+                      }
+                    ?>
+                      <tr>
+                        <td><?php echo $nomor; ?></td>
+                        <td><?php echo date('d-m-Y', strtotime($pecah['tgl_pemesanan'])); ?></td>
+                        <td><?php echo $pecah['nama_pelanggan']; ?></td>
+                        <td><?php echo $status_pemesanan; ?></td>
+                        <td>
+                          <a href="detailpemesanan.php?id=<?= $pecah['id_pemesanan']; ?>" class="btn-primary btn">Detail</a>
+                          <?= $button_konfirmasi; ?>
+                        </td>
+                      </tr>
+                      <?php $nomor++ ?>
+                    <?php } ?>
+                  </tbody>
+                </table>
               </div>
             </div>
           </section>
         </div>
-        <!-- /.row (main row) -->
-      </div><!-- /.container-fluid -->
     </section>
     <!-- /.content -->
   </div>
 
   <?php include_once('_partials/bawah.php'); ?>
-

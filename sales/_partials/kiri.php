@@ -32,40 +32,20 @@
             </a>
           </li>
           <li class="nav-header">HALAMAN</li>
-          <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-chart-pie"></i>
-              <p>
-                Produk
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="<?=$url?>sales/produk.php" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Daftar Produk</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="<?=$url?>sales/jenisproduk.php" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Jenis Produk</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="<?=$url?>sales/produkawal.php" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Stok Awal Produk</p>
-                </a>
-              </li>
-            </ul>
-          </li>
+          
           <li class="nav-item">
-            <a href="<?=$url?>sales/tambahpemesanan.php" class="nav-link">
+            <a href="<?=$url?>sales/pemesanan.php" class="nav-link">
               <i class="nav-icon far fa-image"></i>
               <p>
                 Data Pemesanan
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="<?=$url?>sales/penjualan.php" class="nav-link">
+              <i class="nav-icon far fa-image"></i>
+              <p>
+                Data Penjualan
               </p>
             </a>
           </li>

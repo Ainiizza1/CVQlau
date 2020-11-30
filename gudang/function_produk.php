@@ -3,7 +3,8 @@ include "../koneksi.php";
 
 
 //data jenis produk
-$result = mysqli_query($conn, "SELECT * FROM t_jproduk INNER JOIN t_produk USING (id_jproduk)");
+// $result = mysqli_query($conn, "SELECT * FROM t_jproduk INNER JOIN t_produk USING (id_jproduk)");
+$result = mysqli_query($conn, "SELECT * FROM t_jproduk ");
 
 $jenisproduk = array();
 while ($row = mysqli_fetch_assoc($result)) {
