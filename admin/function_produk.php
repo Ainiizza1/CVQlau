@@ -4,10 +4,11 @@ include "../koneksi.php";
 
 //data jenis produk
 $result = mysqli_query($conn, "SELECT * FROM t_jproduk");
+$result = mysqli_query($conn, "SELECT * FROM t_kendaraan");
 
-$jenisproduk = array();
+$kendaraan = array();
 while ($row = mysqli_fetch_assoc($result)) {
-    $jenisproduk[]=$row;
+    $kendaraan[]=$row;
 }
 return mysqli_affected_rows($conn);
 

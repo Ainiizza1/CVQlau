@@ -43,15 +43,50 @@
                 </h3>
               </div><!-- /.card-header -->
               <div class="card-body">
-                <h3>Halaman Sales</h3>
-              </div>
-            </div>
-          </section>
-        </div>
-        <!-- /.row (main row) -->
-      </div><!-- /.container-fluid -->
-    </section>
-    <!-- /.content -->
-  </div>
+                <table id="example1" class="table table-bordered table-hover">
+                  <thead>
+                    <tr>
+                      <th>No</th>
+                      <th>NIK</th>
+                      <th>Nama Sales</th>
+                      <th>No Kendaraan</th>
+                      <th>Aksi</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                   <?php $nomor=1; ?>
+                   <?php $ambil = $conn->query("SELECT * FROM t_sales JOIN t_kendaraan ON t_sales.id_kendaraan = t_kendaraan.id_kendaraan"); ?>
+                   <?php while ($pecah = $ambil->fetch_assoc()) { ?>
+                    <tr>
+                     <td><?php echo $nomor; ?></td>
+                     <td><?php echo $pecah['nik']; ?></td>
+                     <td><?php echo $pecah['nama_sales']; ?></td>
+                     <td><?php echo $pecah['plat']; ?></td>
+                     <td>
+                      <a href="sales_detail.php?id=<?= $pecah['id_sales']; ?>" class="btn-primary btn">Detail</a>
+                    </td>
+                  </tr>
+                  <?php $nomor++ ?>
+                <?php } ?>
+              </tbody>
+              <tfoot>
+               <tr>
+                 <th>No</th>
+                 <th>NIK</th>
+                 <th>Nama Sales</th>
+                 <th>No Kendaraan</th>
+                 <th>Aksi</th>
+               </tr>
+             </tfoot>
+           </table>
+         </div>
+       </div>
+     </section>
+   </div>
+   <!-- /.row (main row) -->
+ </div><!-- /.container-fluid -->
+</section>
+<!-- /.content -->
+</div>
 
-  <?php include_once('_partials/bawah.php'); ?>
+<?php include_once('_partials/bawah.php'); ?>

@@ -83,14 +83,6 @@
                           <input name="nohppelanggan" type="text" class="form-control" placeholder="No Hp / Telp">
                         </div>
                         <div class="form-group">
-                          <label>LATITUDE</label>
-                          <input name="latitude" type="text" class="form-control" placeholder="Latitude">
-                        </div>
-                        <div class="form-group">
-                          <label>LONGITUDE</label>
-                          <input name="longitude" type="text" class="form-control" placeholder="Longitude">
-                        </div>
-                        <div class="form-group">
                           <label>STATUS</label>
                           <select class="form-control selectlive" name="statuspelanggan" required>
                             <option selected disabled>Silahkan Dipilih</option>
@@ -115,12 +107,10 @@
                       $kotapelanggan = $_POST['kotapelanggan'];
                       $kecamatanpelanggan = $_POST['kecamatanpelanggan'];
                       $nohppelanggan = $_POST['nohppelanggan'];
-                      $latitude = $_POST['latitude'];
-                      $longitude = $_POST['longitude'];
                       $statuspelanggan = $_POST['statuspelanggan'];
 
-                      $ambil = $conn->query("INSERT INTO t_pelanggan (kode_pelanggan, nama_pelanggan, alamat_pelanggan, kota, kecamatan, telepon_pelanggan, latitude, longitude, status)
-                        VALUES('$kodepelanggan', '$namapelanggan', '$alamatpelanggan', '$kotapelanggan', '$kecamatanpelanggan', '$nohppelanggan', '$latitude', '$longitude', '$statuspelanggan')");
+                      $ambil = $conn->query("INSERT INTO t_pelanggan (kode_pelanggan, nama_pelanggan, alamat_pelanggan, kota, kecamatan, telepon_pelanggan, status)
+                        VALUES('$kodepelanggan', '$namapelanggan', '$alamatpelanggan', '$kotapelanggan', '$kecamatanpelanggan', '$nohppelanggan', '$statuspelanggan')");
                       if ($ambil) {
                         echo "<button type='button' class='btn btn-success toastrDefaultSuccess'>Data Pelanggan Berhasil Disimpan</button>";
                         echo "<script> location='pelanggan.php'; </script>";

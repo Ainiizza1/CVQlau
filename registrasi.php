@@ -23,7 +23,9 @@ if (isset($_SESSION['login'])) {
         header("Location: sales/index.php");
     } elseif ($_SESSION['level']=="gudang") {
         header("Location: gudang/index.php");
-    }
+    } elseif ($_SESSION['level']=="pelanggan") {
+        header("Location: pelanggan/index.php");
+    } 
 }
 ?>
 <!DOCTYPE html>
@@ -93,6 +95,7 @@ if (isset($_SESSION['login'])) {
                         <option value="user">User</option> 
                         <option value="sales">Sales</option> 
                         <option value="gudang">Bagian Gudang</option> 
+                        <option value="pelanggan">Pelanggan</option> 
                     </select>
                     <span class="focus-input100"></span>
                     <span class="symbol-input100">

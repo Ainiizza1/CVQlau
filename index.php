@@ -15,7 +15,9 @@ if (isset($_SESSION['login'])) {
             header("Location: sales/index.php");
         } elseif ($_SESSION['level'] == "gudang") {
             header("Location: gudang/index.php");
-        }
+        } elseif ($_SESSION['level']=="pelanggan") {
+            header("Location: pelanggan/index.php");
+        } 
     }
 }
 if (isset($_POST["login"])) {

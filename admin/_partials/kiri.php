@@ -56,6 +56,21 @@
               </p>
             </a>
           </li>
+          <li class="nav-item">
+            <a href="<?=$url?>admin/pemesanan.php" class="nav-link">
+              <i class="nav-icon far fa-image"></i>
+              <p>
+                Data Pemesanan
+              </p>
+            </a>
+          </li><li class="nav-item">
+            <a href="<?=$url?>admin/sales.php" class="nav-link">
+              <i class="nav-icon far fa-image"></i>
+              <p>
+                Data Sales
+              </p>
+            </a>
+          </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

@@ -55,10 +55,10 @@
                     <form method="post" enctype="multipart/form-data">
                       <div class="card-body">
 
-                        <div class="form-group">
+                       <!--  <div class="form-group">
                           <label>NAMA</label>
                           <input name="namapengguna" type="text" class="form-control" required="" placeholder="Nama Pengguna">
-                        </div>
+                        </div> -->
                         <div class="form-group">
                           <label>USERNAME</label>
                           <input name="usernamepengguna" type="text" class="form-control" required="" placeholder="Username Pengguna">
@@ -86,10 +86,10 @@
                             <option value="0">Tidak Aktif</option>
                           </select>
                         </div>  
-                        <div class="form-group">
+                        <!-- <div class="form-group">
                           <label>FOTO</label>
                           <input name="foto" type="file" class="form-control" required>
-                        </div>
+                        </div> -->
                       </div>
                       <!-- /.card-body -->
                       <div class="card-footer">
@@ -101,20 +101,20 @@
                     if (isset($_POST['tambah'])) 
                     {
                       // var_dump($_FILES);die();
-                      $nama = $_FILES['foto']['name'];
-                      $temp = $_FILES['foto']['tmp_name'];
-                      $lokasi_upload = "assets/dist/img/";
-                      move_uploaded_file($temp,$lokasi_upload.$nama );
+                      // $nama = $_FILES['foto']['name'];
+                      // $temp = $_FILES['foto']['tmp_name'];
+                      // $lokasi_upload = "assets/dist/img/";
+                      // move_uploaded_file($temp,$lokasi_upload.$nama );
 
-                      $namapengguna = $_POST['namapengguna'];
+                      // $namapengguna = $_POST['namapengguna'];
                       $usernamepengguna = $_POST['usernamepengguna'];
                       $passwordpengguna = password_hash($_POST['passwordpengguna'],PASSWORD_DEFAULT);
                       $levelpengguna = $_POST['levelpengguna'];
                       $statuspengguna = $_POST['statuspengguna'];
                       // var_dump($passwordpengguna);die();
 
-                      $ambil = $conn->query("INSERT INTO t_users (nama, username, password, level, status, foto)
-                        VALUES('$namapengguna', '$usernamepengguna', '$passwordpengguna', '$levelpengguna', '$statuspengguna','$foto')");
+                      $ambil = $conn->query("INSERT INTO t_users (username, password, level, status)
+                        VALUES('$usernamepengguna', '$passwordpengguna', '$levelpengguna', '$statuspengguna')");
 
                       echo "<button type='button' class='btn btn-success toastrDefaultSuccess'>Data Pengguna Berhasil Ditambahka<n/button>";
                       echo "<script> location='pengguna.php'; </script>";

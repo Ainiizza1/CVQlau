@@ -54,9 +54,8 @@
                       <th>Alamat</th>
                       <th>Kota</th>
                       <th>Kecamatan</th>
-                      <th>No Hp / Telp</th>
+                      <th>No Telp</th>
                       <th>Status</th>
-                      <th>Aksi</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -72,34 +71,29 @@
                      <td><?php echo $pecah['kecamatan']; ?></td>
                      <td><?php echo $pecah['telepon_pelanggan']; ?></td>
                      <td class="project-state"><span class="badge badge-success"><?php echo ($pecah['status']=="1")?"Aktif":"Tidak Tidak Aktif"; ?></span></td>
-                     <td>
-                      <a href="hapuspelanggan.php?id=<?= $pecah['id_pelanggan']; ?>" class="btn-danger btn">Hapus</a>
-                      <a href="ubahpelanggan.php?id=<?= $pecah['id_pelanggan']; ?>" class="btn btn-warning">Ubah</a>
-                    </td>
-                  </tr>
-                  <?php $nomor++ ?>
-                <?php } ?>
-              </tbody>
-              <tfoot>
-               <tr>
-                <th>No</th>
-                <th>Nama Pelanggan</th>
-                <th>Kode Pelanggan</th>
-                <th>Alamat</th>
-                <th>Kota</th>
-                <th>Kecamatan</th>
-                <th>No Hp / Telp</th>
-                <th>Status</th>
-                <th>Aksi</th>
-              </tr>
-            </tfoot>
-          </table>
+                   </tr>
+                   <?php $nomor++ ?>
+                 <?php } ?>
+               </tbody>
+               <tfoot>
+                 <tr>
+                  <th>No</th>
+                  <th>Kode Pelanggan</th>
+                  <th>Nama Pelanggan</th>
+                  <th>Alamat</th>
+                  <th>Kota</th>
+                  <th>Kecamatan</th>
+                  <th>No Telp</th>
+                  <th>Status</th>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
         </div>
-      </div>
-    </section>
-  </div>
-  <!-- /.row (main row) -->
-</div><!-- /.container-fluid -->
+      </section>
+    </div>
+    <!-- /.row (main row) -->
+  </div><!-- /.container-fluid -->
 </section>
 <!-- /.content -->
 </div>

@@ -21,7 +21,7 @@
       'username'=>$_POST['usernamepengguna'],
       'password'=>$_POST['passwordpengguna'],
       'level'=>$_POST['levelpengguna'],
-      'nama'=>$_POST['namapengguna'],
+      // 'nama'=>$_POST['namapengguna'],
       'status'=>$_POST['statuspengguna']
     ];
     // var_dump($data);die();  
@@ -85,10 +85,10 @@
                     <!-- form start -->
                     <form method="post">
                       <div class="card-body">
-                        <div class="form-group">
+                        <!-- <div class="form-group">
                           <label>NAMA</label>
                           <input name="namapengguna" type="text" class="form-control" placeholder="Nama Pengguna" value="<?= $pengguna['nama'] ?>">
-                        </div>
+                        </div> -->
                         <div class="form-group">
                           <label>USERNAME</label>
                           <input name="usernamepengguna" type="text" class="form-control" value="<?= $pengguna['username'] ?>">

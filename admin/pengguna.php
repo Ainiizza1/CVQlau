@@ -49,7 +49,7 @@ include_once('_partials/kiri.php');
 									<thead>
 										<tr>
 											<th>No</th>
-											<th>Nama</th>
+											<!-- <th>Nama</th> -->
 											<th>Username</th>
 											<th>Level User</th>
 											<th>Foto</th>
@@ -65,7 +65,7 @@ include_once('_partials/kiri.php');
 											?>
 											<tr>
 												<td><?php echo $nomor; ?></td>
-												<td><?php echo $pecah['nama']; ?></td>
+												<!-- <td><?php echo $pecah['nama']; ?></td> -->
 												<td><?php echo $pecah['username']; ?></td>
 												<td><?php echo $pecah['level']; ?></td>
 												<td><img src="<?=$url?>img/<?php echo $pecah['foto']; ?>" width="100" height="100"></td>
