@@ -98,19 +98,30 @@
                   <?php 
                   if (isset($_POST['tambah'])) 
                   {
+                    // var_dump($_POST);die();
                     $nik = $_POST['nik'];
                     $namalengkap = $_POST['nama_sales'];
                     $alamat = $_POST['alamat'];
                       // $foto = $_POST['foto'];
                     $kendaraan = $_POST['nokendaraan'];
-                      // $username = $_POST['username'];
-                      // $password = $_POST['password'];
+                      $username = $_POST['username'];
+                      $password = password_hash($_POST['password'],PASSWORD_DEFAULT);
 
-                    $ambil = $conn->query("INSERT INTO t_sales (nik, nama_sales, alamat, id_kendaraan)
-                      VALUES('$nik','$namalengkap','$alamat','$kendaraan' )");
-
-                    echo "<button type='button' class='btn btn-success toastrDefaultSuccess'>Data Sales Berhasil Ditambahka<n/button>";
-                    echo "<script> location='sales.php'; </script>";
+                      $insert_user =  $conn->query("INSERT INTO t_users (username, password, level, status) VALUES ('$username','$password','sales','1')");
+                    if ($insert_user) {
+                      $user_terakhir =  $conn->query("SELECT * FROM t_users ORDER BY id DESC limit 1");
+                      $id_user = $user_terakhir->fetch_assoc()['id'];
+                      $insert_sales = $conn->query("INSERT INTO t_sales (nik, nama_sales, alamat, id_kendaraan,id_user)
+                      VALUES('$nik','$namalengkap','$alamat','$kendaraan','$id_user' )");
+                      if ($insert_sales) {
+                        echo "<button type='button' class='btn btn-success toastrDefaultSuccess'>Data Sales Berhasil Ditambahka<n/button>";
+                        echo "<script> location='sales.php'; </script>";
+                      } else {
+                        echo mysqli_error($conn);
+                      }
+                    } else{
+                      echo mysqli_error($conn);
+                    }
                   } 
 
                   ?>
