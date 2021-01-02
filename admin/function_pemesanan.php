@@ -25,7 +25,15 @@ function detail_pemesanan_sales($id)
 function detail_sales($id)
 {
     global $conn;
-    $query = "SELECT * FROM t_sales JOIN t_kendaraan ON t_sales.id_kendaraan = t_kendaraan.id_kendaraan WHERE id_sales = '$id'";
+    $query = "SELECT * FROM t_sales JOIN t_kendaraan ON t_sales.id_kendaraan = t_kendaraan.id_kendaraan JOIN t_users ON t_sales.id_user = t_users.id WHERE id_sales = '$id'";
+    $result = mysqli_query($conn, $query);
+    return $result;
+}
+
+function detail_pelanggan($id)
+{
+    global $conn;
+    $query = "SELECT * FROM t_pelanggan WHERE id_pelanggan = '$id'";
     $result = mysqli_query($conn, $query);
     return $result;
 }
@@ -44,5 +52,12 @@ function hapus_pemesanan($id)
     if ($result) {
         $result = mysqli_query($conn, "DELETE FROM t_pemesanan WHERE id_pemesanan = '$id'");
     }
+    return $result;
+}
+
+function hapus_pelanggan($id)
+{
+    global $conn;
+    $result = mysqli_query($conn, "DELETE FROM t_pelanggan WHERE id_pelanggan = '$id'");
     return $result;
 }

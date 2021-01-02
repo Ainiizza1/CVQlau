@@ -8,7 +8,7 @@ include_once('_partials/atas.php');
 include_once('_partials/kiri.php');
 
 $id = $_GET['id'];
-$detail_sales=detail_sales($id);
+$detail_pelanggan=detail_pelanggan($id);
   // var_dump($pem);die();
 
 ?>
@@ -19,12 +19,12 @@ $detail_sales=detail_sales($id);
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1 class="m-0 text-dark">Detail Sales</h1>
+          <h1 class="m-0 text-dark">Detail Pelanggan</h1>
         </div><!-- /.col -->
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item active">Sales</li>
+            <li class="breadcrumb-item active">Pelanggan</li>
           </ol>
         </div><!-- /.col -->
       </div><!-- /.row -->
@@ -50,44 +50,37 @@ $detail_sales=detail_sales($id);
                 <thead>
                   <tr>
                     <th>No</th>
-                    <th>Foto</th>
-                    <th>NIK</th>
-                    <th>Nama</th>
+                    <th>Kode Pelanggan</th>
+                    <th>Nama Pelanggan</th>
                     <th>Alamat</th>
-                    <th>id user</th>
-                    <th>No Kendaraan</th>
-                    <th>Aksi</th>
+                    <th>Kota</th>
+                    <th>Kecamatan</th>
+                    <th>No Telp</th>
                   </tr>
                 </thead>
                 <tbody>
                   <?php $nomor=1; ?>
-                  <?php while ($pecah = $detail_sales->fetch_assoc()) { ?>
+                  <?php while ($pecah = $detail_pelanggan->fetch_assoc()) { ?>
                     <tr>
                       <td><?php echo $nomor; ?></td>
-                      <td><img src="../img/<?php echo $pecah['foto']?>" width="200px" height="200px"></td>
-                      <td><?php echo $pecah['nik']; ?></td>
-                      <td><?php echo $pecah['nama_sales']; ?></td>
-                      
-                      <td><?php echo $pecah['alamat']; ?></td>
-                      <td><?php echo $pecah['username']; ?></td>
-                      <td><?php echo $pecah['plat']; ?></td>
-                      <td>
-                        <a href="sales_hapus.php?id=<?= $pecah['id_sales']; ?>" class="btn-danger btn">Hapus</a>
-                        <a href="sales_ubah.php?id=<?= $pecah['id_sales']; ?>" class="btn btn-warning">Ubah</a>
-                      </td>
+                      <td><?php echo $pecah['kode_pelanggan']; ?></td>
+                      <td><?php echo $pecah['nama_pelanggan']; ?></td>
+                      <td><?php echo $pecah['alamat_pelanggan']; ?></td>
+                      <td><?php echo $pecah['kota']; ?></td>
+                      <td><?php echo $pecah['kecamatan']; ?></td>
+                      <td><?php echo $pecah['telepon_pelanggan']; ?></td>
                     </tr>
                     <?php $nomor++ ?>
                   <?php } ?>
                 </tbody>
                 <tfoot>
                   <th>No</th>
-                  <th>Foto</th>
-                  <th>NIK</th>
-                  <th>Nama</th>
+                  <th>Kode Pelanggan</th>
+                  <th>Nama Pelanggan</th>
                   <th>Alamat</th>
-                  <th>id user</th>
-                  <th>No Kendaraan</th>
-                  <th>Aksi</th>
+                  <th>Kota</th>
+                  <th>Kecamatan</th>
+                  <th>No Telp</th>
                 </tfoot>
               </table>
             </div>

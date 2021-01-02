@@ -18,20 +18,20 @@
   {
     $data = [
       'id_kendaraan'=>$id_kendaraan,
-      'namakendaraan'=>$_POST['namakendaraan'],
+      'nama_kendaraan'=>$_POST['nama_kendaraan'],
       'plat'=>$_POST['plat'],
       'warna'=>$_POST['warna']
     ];
     // var_dump($data);die();  
-    if (ubahpengguna($data) > 0) {
+    if (ubahkendaraan($data) > 0) {
       echo "<script>
       alert('Data Kendaraan Berhasil Diubah');
-      document.location.href = 'pengguna.php';
+      document.location.href = 'kendaraan.php';
       </script>";
     } else {
       echo "<script>
       alert('Data Kendaraan Gagal Diubah');
-      document.location.href = 'pengguna.php';
+      document.location.href = 'kendaraan.php';
       </script>";
     }
   } 
@@ -81,12 +81,12 @@
                     <!-- /.card-header -->
                     
                     <!-- form start -->
-                     <form method="post" enctype="multipart/form-data">
+                    <form method="post" enctype="multipart/form-data">
                       <div class="card-body">
 
                         <div class="form-group">
                           <label>NAMA</label>
-                          <input name="namakendaraan" type="text" class="form-control" required="" value="<?= $kendaraan['nama_kendaraan'] ?>">
+                          <input name="nama_kendaraan" type="text" class="form-control" required="" value="<?= $kendaraan['nama_kendaraan'] ?>">
                         </div>
                         <div class="form-group">
                           <label>PLAT</label>
@@ -104,18 +104,18 @@
 
 
 
+                    </div>
                   </div>
-                </div>
 
-              </div><!-- /.card-body -->
-            </div>
-          </section>
-        </div>
-        <!-- /.row (main row) -->
-      </div><!-- /.container-fluid -->
-    </section>
-    <!-- /.content -->
-  </div>
+                </div><!-- /.card-body -->
+              </div>
+            </section>
+          </div>
+          <!-- /.row (main row) -->
+        </div><!-- /.container-fluid -->
+      </section>
+      <!-- /.content -->
+    </div>
 
-  <?php include_once('_partials/bawah.php'); ?>
+    <?php include_once('_partials/bawah.php'); ?>
 

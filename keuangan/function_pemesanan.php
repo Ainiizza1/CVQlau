@@ -27,6 +27,15 @@ function detail_sales($id)
     global $conn;
     $query = "SELECT * FROM t_sales JOIN t_kendaraan ON t_sales.id_kendaraan = t_kendaraan.id_kendaraan WHERE id_sales = '$id'";
     $result = mysqli_query($conn, $query);
+
+    return $result;
+}
+
+function detail_pelanggan($id)
+{
+    global $conn;
+    $query = "SELECT * FROM t_pelanggan WHERE id_pelanggan = '$id'";
+    $result = mysqli_query($conn, $query);
     return $result;
 }
 

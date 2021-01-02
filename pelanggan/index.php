@@ -1,11 +1,11 @@
 <?php 
 session_start();
 include('cek_session.php');
-  require_once('../url.php'); 
-  require_once('function_produk.php'); 
+require_once('../url.php'); 
+require_once('function_produk.php'); 
 
-  include_once('_partials/atas.php');
-  include_once('_partials/kiri.php');
+include_once('_partials/atas.php');
+include_once('_partials/kiri.php');
 ?>
 
 <div class="content-wrapper">
@@ -14,12 +14,12 @@ include('cek_session.php');
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1 class="m-0 text-dark">USER</h1>
+          <h1 class="m-0 text-dark">PELANGGAN</h1>
         </div><!-- /.col -->
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="index.php">Home</a></li>
-            <li class="breadcrumb-item active">Dashboard v1</li>
+            <li class="breadcrumb-item active">Dashboard Pelanggan</li>
           </ol>
         </div><!-- /.col -->
       </div><!-- /.row -->
@@ -34,61 +34,40 @@ include('cek_session.php');
       <div class="row">
         <div class="col-lg-3 col-6">
           <!-- small box -->
-          <div class="small-box bg-info">
+          <div class="small-box bg-success">
             <div class="inner">
-              <h3>150</h3>
-
-              <p>New Orders</p>
+              <h3>53<sup style="font-size: 20px">%</sup></h3>
+              <p>Total Pemesanan</p>
             </div>
             <div class="icon">
-              <i class="ion ion-bag"></i>
+              <i class="ion ion-stats-bars"></i>
             </div>
-            <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
           </div>
         </div>
-        <!-- ./col -->
+
         <div class="col-lg-3 col-6">
           <!-- small box -->
           <div class="small-box bg-success">
             <div class="inner">
               <h3>53<sup style="font-size: 20px">%</sup></h3>
-
-              <p>Bounce Rate</p>
+              <p>Total Penjualan</p>
             </div>
             <div class="icon">
               <i class="ion ion-stats-bars"></i>
             </div>
-            <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
           </div>
         </div>
-        <!-- ./col -->
+
         <div class="col-lg-3 col-6">
           <!-- small box -->
-          <div class="small-box bg-warning">
+          <div class="small-box bg-success">
             <div class="inner">
-              <h3>44</h3>
-
-              <p>User Registrations</p>
+              <h3>53<sup style="font-size: 20px">%</sup></h3>
+              <p>Total Produk</p>
             </div>
             <div class="icon">
-              <i class="ion ion-person-add"></i>
+              <i class="ion ion-stats-bars"></i>
             </div>
-            <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-          </div>
-        </div>
-        <!-- ./col -->
-        <div class="col-lg-3 col-6">
-          <!-- small box -->
-          <div class="small-box bg-danger">
-            <div class="inner">
-              <h3>65</h3>
-
-              <p>Unique Visitors</p>
-            </div>
-            <div class="icon">
-              <i class="ion ion-pie-graph"></i>
-            </div>
-            <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <!-- ./col -->
@@ -107,7 +86,7 @@ include('cek_session.php');
               </h3>
             </div><!-- /.card-header -->
             <div class="card-body">
-              
+
             </div><!-- /.card-body -->
           </div>
           <!-- /.card -->

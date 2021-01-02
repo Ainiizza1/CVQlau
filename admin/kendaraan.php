@@ -48,7 +48,7 @@ include_once('_partials/kiri.php');
               </h3>
             </div><!-- /.card-header -->
             <div class="card-body">
-              <a class="btn btn-primary" href="tambahkendaraan.php">Tambah Data</a><br><br>
+              <a class="btn btn-primary" href="kendaraan_tambah.php">Tambah Data</a><br><br>
               <table id="example1" class="table table-bordered table-hover">
                 <thead>
                   <tr>
@@ -70,8 +70,8 @@ include_once('_partials/kiri.php');
                       <td><?php echo $pecah['plat']; ?></td>
                       <td><?php echo $pecah['warna']; ?></td>
                       <td>
-                        <a href="hapuskendaraan.php?id=<?= $pecah['id_kendaraan']; ?>" class="btn-danger btn">Hapus</a>
-                        <a href="ubahkendaraan.php?id=<?= $pecah['id_kendaraan']; ?>" class="btn btn-warning">Ubah</a>
+                        <a href="kendaraan_hapus.php?id=<?= $pecah['id_kendaraan']; ?>" class="btn-danger btn">Hapus</a>
+                        <a href="kendaraan_ubah.php?id=<?= $pecah['id_kendaraan']; ?>" class="btn btn-warning">Ubah</a>
                       </td>
                     </tr>
                     <?php $nomor++ ?>

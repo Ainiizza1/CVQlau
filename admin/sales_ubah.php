@@ -6,6 +6,37 @@
 
   include_once('_partials/atas.php');
   include_once('_partials/kiri.php');
+
+  
+  $id_sales = $_GET["id"];
+
+  $result = mysqli_query($conn,"SELECT * FROM t_sales WHERE id_sales=$id_sales");
+  $sales = mysqli_fetch_assoc($result);
+
+  if (isset($_POST['ubah'])) 
+  {
+    $data = [
+      'id_sales'=> $id_sales,
+      'id_kendaraan'=> $_POST['id_kendaraan'],
+      'nik'=> $_POST['nik'],
+      'nama_sales'=> $_POST['nama_sales'],
+      'foto'=> $_POST['foto'],
+      'alamat'=> $_POST['alamat'],
+      'id_user'=> $_POST['id_user']
+    ];
+    // var_dump($data);die();  
+    if (ubahsales($data) > 0) {
+      echo "<script>
+      alert('Data Sales Berhasil Diubah');
+      document.location.href = 'sales.php';
+      </script>";
+    } else {
+      echo "<script>
+      alert('Data Sales Berhasil Diubah');
+      document.location.href = 'sales.php';
+      </script>";
+    }
+  } 
   ?>
 
   <div class="content-wrapper">
@@ -14,12 +45,15 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Tambah Sales</h1>
+            <h1 class="m-0 text-dark">Ubah Sales</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="produk.php">Home</a></li>
-              <li class="breadcrumb-item active">Tambah Sales</li>
+              <li class="breadcrumb-item active">Ubah Sales</li>
+              <?php echo "<pre>";
+              print_r($sales);
+              echo "</pre>"; ?>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -39,7 +73,7 @@
               <div class="card-header">
                 <h3 class="card-title">
                   <i class="fas fa-chart-pie mr-1"></i>
-                  Halaman Tambah Sales
+                  Halaman Ubah Sales
                 </h3>
               </div><!-- /.card-header -->
 
@@ -47,7 +81,7 @@
                 <div class="card-body">
                   <div class="card card-primary">
                     <div class="card-header">
-                      <h3 class="card-title">TAMBAH SALES</h3>
+                      <h3 class="card-title">UBAH SALES</h3>
                     </div>
                     <!-- /.card-header -->
                     
@@ -56,24 +90,27 @@
                       <div class="card-body">
                         <div class="form-group">
                           <label>NIK</label>
-                          <input name="nik" type="text" class="form-control" required="" placeholder="NIK Sales">
+                          <input name="nik" type="text" class="form-control" required="" value="<?= $sales["nik"]; ?>">
                         </div>
                         <div class="form-group">
                           <label>Nama Lengkap</label>
-                          <input name="nama_sales" type="text" class="form-control" required="" placeholder="Nama Sales">
+                          <input name="nama_sales" type="text" class="form-control" required="" value="<?= $sales["nama_sales"]; ?>">
+                        </div>  
+                        <div class="form-group">
+                          <img src="../img/<?php echo $sales["foto"] ?>" width=200>
+                          <div class="form-group">
+                            <label>Ganti Foto</label>
+                            <input type="file" class="form-control" name="foto">
+                          </div>
                         </div>  
                         <div class="form-group">
                           <label>Alamat</label>
-                          <input name="alamat" type="text" class="form-control" required="" placeholder="Alamat Sales">
-                        </div>  
-                        <div class="form-group">
-                          <label>Foto</label>
-                          <input name="foto" type="file" class="form-control">
+                          <input name="alamat" type="text" class="form-control" required="" value="<?= $sales["alamat"]; ?>">
                         </div>  
                         <div class="form-group">
                           <label>No Kendaraan</label>
                           <select class="form-control selectlive" name="nokendaraan" required>
-                            <option selected disabled>Silahkan Dipilih</option>
+                            <option selected disabled><?= $sales["plat"]; ?></option>
                             <?php foreach ($kendaraan as $nokendaraan) : ?>
                               <option value="<?php echo $nokendaraan['id_kendaraan'] ?>"><?php echo $nokendaraan['plat'] ?>
                             </option>
@@ -82,7 +119,7 @@
                       </div>    
                       <div class="form-group">
                         <label>Username</label>
-                        <input name="username" type="text" class="form-control" required="" placeholder="Username">
+                        <input name="username" type="text" class="form-control" required="" value="<?= $sales["id_user"]; ?>">
                       </div>    
                       <div class="form-group">
                         <label>Password</label>
@@ -94,43 +131,8 @@
                       <button type="submit" class="btn btn-primary" name="tambah">Tambah</button>
                     </div>
                   </form>
-
-                  <?php 
-                  if (isset($_POST['tambah'])) 
-                  {
-                    $nama = $_FILES['foto']['name'];
-                    $lokasi = $_FILES['foto']['tmp_name'];
-                    move_uploaded_file($lokasi, "../img/".$nama);
-                    $nik = $_POST['nik'];
-                    $namalengkap = $_POST['nama_sales'];
-                    $alamat = $_POST['alamat'];
-                      // $foto = $_POST['foto'];
-                    $kendaraan = $_POST['nokendaraan'];
-                    $username = $_POST['username'];
-                    $password = password_hash($_POST['password'],PASSWORD_DEFAULT);
-
-                    $insert_user =  $conn->query("INSERT INTO t_users (username, password, level, status) VALUES ('$username','$password','sales','1')");
-                    if ($insert_user) {
-                      $user_terakhir =  $conn->query("SELECT * FROM t_users ORDER BY id DESC limit 1");
-                      $id_user = $user_terakhir->fetch_assoc()['id'];
-                      $insert_sales = $conn->query("INSERT INTO t_sales (nik, nama_sales, foto, alamat, id_kendaraan,id_user)
-                        VALUES('$nik','$namalengkap','$nama','$alamat','$kendaraan','$id_user')");
-                      if ($insert_sales) {
-                        echo "<button type='button' class='btn btn-success toastrDefaultSuccess'>Data Sales Berhasil Ditambahka<n/button>";
-                        echo "<script> location='sales.php'; </script>";
-                      } else {
-                        echo mysqli_error($conn);
-                      }
-                    } else{
-                      echo mysqli_error($conn);
-                    }
-                  } 
-
-                  ?>
-
                 </div>
               </div>
-
             </div><!-- /.card-body -->
           </div>
         </section>
@@ -140,5 +142,6 @@
   </section>
   <!-- /.content -->
 </div>
+
 <?php include_once('_partials/bawah.php'); ?>
 

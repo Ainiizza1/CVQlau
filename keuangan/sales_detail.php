@@ -6,9 +6,10 @@ require_once('function_pemesanan.php');
 
 include_once('_partials/atas.php');
 include_once('_partials/kiri.php');
+
 $id = $_GET['id'];
 $detail_sales=detail_sales($id);
-  // var_dump($pem);die();
+
 
 ?>
 

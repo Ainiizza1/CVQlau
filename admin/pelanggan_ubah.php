@@ -23,8 +23,6 @@
       'alamat'=>$_POST['alamat'],
       'nohp'=>$_POST['nohp'],
       'kecamatan'=>$_POST['kecamatan'],
-      'latitude'=>$_POST['latitude'],
-      'longitude'=>$_POST['longitude'],
       'kota'=>$_POST['kota'],
       'status'=>$_POST['status']
     ];
@@ -119,14 +117,6 @@
                         <div class="form-group">
                           <label>NO HP/TELP</label>
                           <input name="nohp" type="text" class="form-control" value="<?= $pelanggan["telepon_pelanggan"]; ?>">
-                        </div>  
-                        <div class="form-group">
-                          <label>LATITUDE</label>
-                          <input name="latitude" type="text" class="form-control" value="<?= $pelanggan["telepon_pelanggan"]; ?>">
-                        </div>  
-                        <div class="form-group">
-                          <label>LONGITUDE</label>
-                          <input name="longitude" type="text" class="form-control" value="<?= $pelanggan["telepon_pelanggan"]; ?>">
                         </div>  
                         <div class="form-group">
                           <label>STATUS</label>

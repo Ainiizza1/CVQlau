@@ -53,6 +53,12 @@ function deletekendaraan($id_kendaraan) {
     return $result;
 }
 
+function deletesales($id_sales) {
+    global $conn;
+    $result = mysqli_query($conn, "DELETE FROM t_sales WHERE id_sales = $id_sales");
+    return $result;
+}
+
 function ubahproduk(array $data) {
     global $conn;
     // var_dump($data['harga_produk']);die();
@@ -62,7 +68,6 @@ function ubahproduk(array $data) {
 
 function ubahpengguna(array $data) {
     global $conn;
-    // var_dump($data['harga_produk']);die();
     $result = mysqli_query($conn, "UPDATE t_users SET username='".$data['username']."', password='".$data['password']."', level='".$data['level']."', nama='".$data['nama']."', status='".$data['status']."' WHERE id = '".$data['id']."'");
     return $result;
 }
@@ -84,10 +89,22 @@ function ubahpelanggan(array $data) {
         telepon_pelanggan='".$data['nohp']."', 
         kota='".$data['kota']."', 
         kecamatan='".$data['kecamatan']."', 
-        latitude='".$data['latitude']."', 
-        longitude='".$data['longitude']."', 
         status='".$data['status']."'
         WHERE id_pelanggan = '".$data['idpelanggan']."'");
+      // var_dump($result);die();
+    return $result;
+}
+
+function ubahsales(array $data) {
+    global $conn;
+    $result = mysqli_query($conn, "UPDATE t_sales SET 
+        id_kendaraan='".$data['id_kendaraan']."', 
+        nik='".$data['nik']."', 
+        nama_sales ='".$data['nama_sales']."', 
+        foto ='".$data['foto']."', 
+        alamat='".$data['alamat']."', 
+        id_user='".$data['id_user']."'
+        WHERE id_sales = '".$data['id_sales']."'");
       // var_dump($result);die();
     return $result;
 }

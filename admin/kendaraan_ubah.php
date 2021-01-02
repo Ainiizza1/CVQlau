@@ -6,6 +6,35 @@
 
   include_once('_partials/atas.php');
   include_once('_partials/kiri.php');
+
+  
+  $id_kendaraan = $_GET["id"];
+
+  $result = mysqli_query($conn,"SELECT * FROM t_kendaraan WHERE id_kendaraan =$id_kendaraan");
+  $kendaraan = mysqli_fetch_assoc($result);
+  // var_dump($produk);
+  
+  if (isset($_POST['ubah'])) 
+  {
+    $data = [
+      'id_kendaraan'=>$id_kendaraan,
+      'nama_kendaraan'=>$_POST['nama_kendaraan'],
+      'plat'=>$_POST['plat'],
+      'warna'=>$_POST['warna']
+    ];
+    // var_dump($data);die();  
+    if (ubahkendaraan($data) > 0) {
+      echo "<script>
+      alert('Data Kendaraan Berhasil Diubah');
+      document.location.href = 'kendaraan.php';
+      </script>";
+    } else {
+      echo "<script>
+      alert('Data Kendaraan Gagal Diubah');
+      document.location.href = 'kendaraan.php';
+      </script>";
+    }
+  } 
   ?>
 
   <div class="content-wrapper">
@@ -14,12 +43,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Tambah Kendaraan</h1>
+            <h1 class="m-0 text-dark">Ubah Kendaraan</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="produk.php">Home</a></li>
-              <li class="breadcrumb-item active">Tambah Kendaraan</li>
+              <li class="breadcrumb-item active">Ubah Kendaraan</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -39,7 +68,7 @@
               <div class="card-header">
                 <h3 class="card-title">
                   <i class="fas fa-chart-pie mr-1"></i>
-                  Halaman Tambah Kendaraan
+                  Halaman Ubah Kendaraan
                 </h3>
               </div><!-- /.card-header -->
 
@@ -47,7 +76,7 @@
                 <div class="card-body">
                   <div class="card card-primary">
                     <div class="card-header">
-                      <h3 class="card-title">TAMBAH KENDARAAN</h3>
+                      <h3 class="card-title">UBAH KENDARAAN</h3>
                     </div>
                     <!-- /.card-header -->
                     
@@ -57,38 +86,23 @@
 
                         <div class="form-group">
                           <label>NAMA</label>
-                          <input name="namakendaraan" type="text" class="form-control" required="" placeholder="Nama Kendaraan">
+                          <input name="nama_kendaraan" type="text" class="form-control" required="" value="<?= $kendaraan['nama_kendaraan'] ?>">
                         </div>
                         <div class="form-group">
                           <label>PLAT</label>
-                          <input name="plat" type="text" class="form-control" required="" placeholder="Plat Kendaraan">
+                          <input name="plat" type="text" class="form-control" required="" value="<?= $kendaraan['plat'] ?>">
                         </div>
                         <div class="form-group">
                           <label>WARNA</label>
-                          <input name="warna" type="text" class="form-control" required="" placeholder="Warna Kendaraan">
+                          <input name="warna" type="text" class="form-control" required="" value="<?= $kendaraan['warna'] ?>">
                         </div>  
                         <!-- /.card-body -->
                         <div class="card-footer">
-                          <button type="submit" class="btn btn-primary" name="tambah">Tambah</button>
+                          <button type="submit" class="btn btn-primary" name="ubah">Ubah</button>
                         </div>
                       </form>
 
-                      <?php 
-                      if (isset($_POST['tambah'])) 
-                      {
-                        $namakendaraan = $_POST['namakendaraan'];
-                        $plat = $_POST['plat'];
-                        $warna = $_POST['warna'];
-                      // var_dump($passwordpengguna);die();
 
-                        $ambil = $conn->query("INSERT INTO t_kendaraan (nama_kendaraan, plat, warna)
-                          VALUES('$namakendaraan', '$plat', '$warna')");
-
-                        echo "<button type='button' class='btn btn-success toastrDefaultSuccess'>Data Kendaraan Berhasil Ditambahka<n/button>";
-                        echo "<script> location='kendaraan.php'; </script>";
-                      } 
-
-                      ?>
 
                     </div>
                   </div>
@@ -102,5 +116,6 @@
       </section>
       <!-- /.content -->
     </div>
+
     <?php include_once('_partials/bawah.php'); ?>
 
