@@ -4,14 +4,24 @@ include "../koneksi.php";
 
 //data jenis produk
 $result = mysqli_query($conn, "SELECT * FROM t_jproduk");
-$result = mysqli_query($conn, "SELECT * FROM t_kendaraan");
+// $result = mysqli_query($conn, "SELECT * FROM t_kendaraan");
 
 $kendaraan = array();
 while ($row = mysqli_fetch_assoc($result)) {
     $kendaraan[]=$row;
 }
 return mysqli_affected_rows($conn);
+function tampil_kendaraan()
+{
+    global $conn;
+    $result = mysqli_query($conn, "SELECT * FROM t_kendaraan");
 
+    $kendaraan = array();
+    while ($row = mysqli_fetch_assoc($result)) {
+        $kendaraan[]=$row;
+    }
+    return $kendaraan;
+}
 
 function kode_produk_berikutnya($jenis)
 {
@@ -56,7 +66,14 @@ function deletekendaraan($id_kendaraan) {
 
 function deletesales($id_sales) {
     global $conn;
+    $result_sales = mysqli_query($conn, "SELECT * FROM t_sales WHERE id_sales = $id_sales");
+    $sales = array();
+    while ($row = mysqli_fetch_assoc($result_sales)) {
+        $sales[]=$row;
+    }
+    // var_dump($sales);die();
     $result = mysqli_query($conn, "DELETE FROM t_sales WHERE id_sales = $id_sales");
+    $result = mysqli_query($conn, "DELETE FROM t_users WHERE id = ".$sales[0]['id_user']);
     return $result;
 }
 
@@ -98,15 +115,23 @@ function ubahpelanggan(array $data) {
 
 function ubahsales(array $data) {
     global $conn;
-    $result = mysqli_query($conn, "UPDATE t_sales SET 
-        id_kendaraan='".$data['id_kendaraan']."', 
-        nik='".$data['nik']."', 
-        nama_sales ='".$data['nama_sales']."', 
-        foto ='".$data['foto']."', 
-        alamat='".$data['alamat']."', 
-        id_user='".$data['id_user']."'
-        WHERE id_sales = '".$data['id_sales']."'");
-      // var_dump($result);die();
+    $foto = '';
+    $password = '';
+    
+    $sql_sales = "UPDATE t_sales SET id_kendaraan = '".$data['id_kendaraan']."', nik = '".$data['nik']."', nama_sales = '".$data['nama_sales']."',  alamat = '".$data['alamat']."' ";
+    if($data['foto']!=""){
+        $sql_sales.= ", foto = '".$data['foto']."' ";
+    }
+    $sql_sales.= " WHERE id_sales = '".$data['id_sales']."'";
+
+    $sql_user = "UPDATE t_users SET username = '".$data['username']."'";
+    if($data['password']!=""){
+        $sql_user.= ", password = '".$data['password']."' ";
+    }
+    $sql_user.= " WHERE id = '".$data['id_user']."'";
+    // var_dump($sql_sales, $sql_user);die();
+    $result = mysqli_query($conn, $sql_sales);
+    $result = mysqli_query($conn, $sql_user);
     return $result;
 }
 
@@ -134,7 +159,3 @@ function deletepelanggan($id_pelanggan) {
     $result = mysqli_query($conn, "DELETE FROM t_pelanggan WHERE id_pelanggan = $id_pelanggan");
     return $result;
 }
-
-
-
-?>

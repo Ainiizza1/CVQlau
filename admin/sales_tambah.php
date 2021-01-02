@@ -6,6 +6,8 @@
 
   include_once('_partials/atas.php');
   include_once('_partials/kiri.php');
+  $kendaraan = tampil_kendaraan();
+
   ?>
 
   <div class="content-wrapper">

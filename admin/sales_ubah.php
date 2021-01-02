@@ -9,32 +9,40 @@
 
   
   $id_sales = $_GET["id"];
-
-  $result = mysqli_query($conn,"SELECT * FROM t_sales JOIN t_users WHERE id_sales=$id_sales");
+  $kendaraan = tampil_kendaraan();
+  $result = mysqli_query($conn,"SELECT * FROM t_sales JOIN t_users ON t_sales.id_user = t_users.id JOIN t_kendaraan ON t_sales.id_kendaraan = t_kendaraan.id_kendaraan WHERE id_sales=$id_sales");
   $sales = mysqli_fetch_assoc($result);
 
   if (isset($_POST['ubah'])) 
   {
+    $nama_foto = $_FILES['foto']['name'];
+    $lokasi = $_FILES['foto']['tmp_name'];
+    
     $data = [
       'id_sales'=> $id_sales,
+      'id_user'=> $_POST['id_user'],
       'id_kendaraan'=> $_POST['id_kendaraan'],
       'nik'=> $_POST['nik'],
       'nama_sales'=> $_POST['nama_sales'],
-      'foto'=> $_POST['foto'],
+      'foto'=> $nama_foto,
       'alamat'=> $_POST['alamat'],
-      'id_user'=> $_POST['id_user']
+      'username'=> $_POST['username'],
+      'password'=>$_POST['password']
     ];
     // var_dump($data);die();  
     if (ubahsales($data) > 0) {
+    move_uploaded_file($lokasi, "../img/".$nama_foto);
+
       echo "<script>
       alert('Data Sales Berhasil Diubah');
-      document.location.href = 'sales.php';
+      document.location.href = 'sales_detail.php?id=$id_sales';
       </script>";
     } else {
       echo "<script>
-      alert('Data Sales Berhasil Diubah');
-      document.location.href = 'sales.php';
+      alert('Data Sales Gagal Diubah');
+      document.location.href = 'sales_detail.php?id=$id_sales';
       </script>";
+      echo mysqli_error($conn);
     }
   } 
   ?>
@@ -108,8 +116,7 @@
                           <label>No Kendaraan</label>
                           <select class="form-control selectlive" name="id_kendaraan">
                             <?php foreach ($kendaraan as $nokendaraan) : ?>
-                              <option selected disabled><?php echo $nokendaraan['plat'] ?></option>
-                              <option value="<?php echo $nokendaraan['id_kendaraan'] ?>"><?php echo $nokendaraan['plat'] ?>
+                              <option <?=($nokendaraan['id_kendaraan']==$sales['id_kendaraan'])?'selected':''?> value="<?php echo $nokendaraan['id_kendaraan'] ?>"><?php echo $nokendaraan['plat'] ?>
                             </option>
                           <?php endforeach ?>
                         </select>
@@ -125,6 +132,7 @@
                     </div>
                     <!-- /.card-body -->
                     <div class="card-footer">
+                      <input name="id_user" type="hidden" class="form-control" placeholder="id_user" value="<?= $sales["id_user"]; ?>">
                       <button type="submit" class="btn btn-primary" name="ubah">Ubah</button>
                     </div>
                   </form>
