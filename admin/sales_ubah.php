@@ -10,7 +10,7 @@
   
   $id_sales = $_GET["id"];
 
-  $result = mysqli_query($conn,"SELECT * FROM t_sales WHERE id_sales=$id_sales");
+  $result = mysqli_query($conn,"SELECT * FROM t_sales JOIN t_users WHERE id_sales=$id_sales");
   $sales = mysqli_fetch_assoc($result);
 
   if (isset($_POST['ubah'])) 
@@ -51,9 +51,6 @@
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="produk.php">Home</a></li>
               <li class="breadcrumb-item active">Ubah Sales</li>
-              <?php echo "<pre>";
-              print_r($sales);
-              echo "</pre>"; ?>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -109,9 +106,9 @@
                         </div>  
                         <div class="form-group">
                           <label>No Kendaraan</label>
-                          <select class="form-control selectlive" name="nokendaraan" required>
-                            <option selected disabled><?= $sales["plat"]; ?></option>
+                          <select class="form-control selectlive" name="id_kendaraan">
                             <?php foreach ($kendaraan as $nokendaraan) : ?>
+                              <option selected disabled><?php echo $nokendaraan['plat'] ?></option>
                               <option value="<?php echo $nokendaraan['id_kendaraan'] ?>"><?php echo $nokendaraan['plat'] ?>
                             </option>
                           <?php endforeach ?>
@@ -119,16 +116,16 @@
                       </div>    
                       <div class="form-group">
                         <label>Username</label>
-                        <input name="username" type="text" class="form-control" required="" value="<?= $sales["id_user"]; ?>">
+                        <input name="username" type="text" class="form-control" required="" value="<?= $sales["username"]; ?>">
                       </div>    
                       <div class="form-group">
                         <label>Password</label>
-                        <input name="password" type="password" class="form-control" required="" placeholder="Password">
+                        <input name="password" type="password" class="form-control" placeholder="Password">
                       </div>    
                     </div>
                     <!-- /.card-body -->
                     <div class="card-footer">
-                      <button type="submit" class="btn btn-primary" name="tambah">Tambah</button>
+                      <button type="submit" class="btn btn-primary" name="ubah">Ubah</button>
                     </div>
                   </form>
                 </div>

@@ -12,6 +12,7 @@ while ($row = mysqli_fetch_assoc($result)) {
 }
 return mysqli_affected_rows($conn);
 
+
 function kode_produk_berikutnya($jenis)
 {
     global $conn;
