@@ -61,3 +61,70 @@ function hapus_pelanggan($id)
     $result = mysqli_query($conn, "DELETE FROM t_pelanggan WHERE id_pelanggan = '$id'");
     return $result;
 }
+
+function jumlah_pemesanan()
+{
+    global $conn;
+    $query = "SELECT count(*) as total FROM t_pemesanan";
+    $result = mysqli_query($conn, $query);
+    $row = mysqli_fetch_assoc($result);
+    $total = $row['total'];
+    return $total;
+
+}
+
+function total_sales()
+{
+    global $conn;
+    $query = "SELECT count(*) as sales FROM t_sales";
+    $result = mysqli_query($conn, $query);
+    $row = mysqli_fetch_assoc($result);
+    $sales = $row['sales'];
+    return $sales;
+    
+}
+
+function total_pelanggan()
+{
+    global $conn;
+    $query = "SELECT count(*) as pelanggan FROM t_pelanggan";
+    $result = mysqli_query($conn, $query);
+    $row = mysqli_fetch_assoc($result);
+    $pelanggan = $row['pelanggan'];
+    return $pelanggan;
+    
+}
+
+function total_pengguna()
+{
+    global $conn;
+    $query = "SELECT count(*) as pengguna FROM t_users";
+    $result = mysqli_query($conn, $query);
+    $row = mysqli_fetch_assoc($result);
+    $pengguna = $row['pengguna'];
+    return $pengguna;
+    
+}
+
+function total_kendaraan()
+{
+    global $conn;
+    $query = "SELECT count(*) as kendaraan FROM t_kendaraan";
+    $result = mysqli_query($conn, $query);
+    $row = mysqli_fetch_assoc($result);
+    $kendaraan = $row['kendaraan'];
+    return $kendaraan;
+    
+}
+
+function total_penjualan()
+{
+    global $conn;
+    $query = "SELECT count(*) as penjualan FROM t_penjualan";
+    $result = mysqli_query($conn, $query);
+    $row = mysqli_fetch_assoc($result);
+    $penjualan = $row['penjualan'];
+    return $penjualan;
+    
+}
+

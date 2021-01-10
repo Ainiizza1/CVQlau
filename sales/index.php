@@ -3,9 +3,15 @@ session_start();
 include('cek_session.php');
 require_once('../url.php'); 
 require_once('function_produk.php'); 
+require_once('function_pemesanan.php'); 
 
 include_once('_partials/atas.php');
 include_once('_partials/kiri.php');
+
+$jumlah_pemesanan = jumlah_pemesanan();
+$total_penjualan = total_penjualan();
+$total_produk = total_produk();
+
 ?>
 
 <div class="content-wrapper">
@@ -36,7 +42,7 @@ include_once('_partials/kiri.php');
           <!-- small box -->
           <div class="small-box bg-success">
             <div class="inner">
-              <h3>53<sup style="font-size: 20px">%</sup></h3>
+              <h3><?php echo $jumlah_pemesanan ?></h3>
               <p>Total Pemesanan</p>
             </div>
             <div class="icon">
@@ -49,7 +55,7 @@ include_once('_partials/kiri.php');
           <!-- small box -->
           <div class="small-box bg-success">
             <div class="inner">
-              <h3>53<sup style="font-size: 20px">%</sup></h3>
+              <h3><?php echo $total_penjualan ?></h3>
               <p>Total Penjualan</p>
             </div>
             <div class="icon">
@@ -62,7 +68,7 @@ include_once('_partials/kiri.php');
           <!-- small box -->
           <div class="small-box bg-success">
             <div class="inner">
-              <h3>53<sup style="font-size: 20px">%</sup></h3>
+              <h3><?php echo $total_produk ?></h3>
               <p>Total Produk</p>
             </div>
             <div class="icon">

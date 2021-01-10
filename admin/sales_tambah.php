@@ -6,6 +6,7 @@
 
   include_once('_partials/atas.php');
   include_once('_partials/kiri.php');
+
   $kendaraan = tampil_kendaraan();
 
   ?>
@@ -106,7 +107,6 @@
                     $nik = $_POST['nik'];
                     $namalengkap = $_POST['nama_sales'];
                     $alamat = $_POST['alamat'];
-                      // $foto = $_POST['foto'];
                     $kendaraan = $_POST['nokendaraan'];
                     $username = $_POST['username'];
                     $password = password_hash($_POST['password'],PASSWORD_DEFAULT);

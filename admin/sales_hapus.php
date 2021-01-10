@@ -14,10 +14,10 @@
     document.location.href = 'sales.php';
     </script>";
   } else {
-    // echo "<script>
-    // alert('Data Sales Gagal Dihapus');
-    // document.location.href = 'sales.php';
-    // </script>";
+    echo "<script>
+    alert('Data Sales Gagal Dihapus');
+    document.location.href = 'sales.php';
+    </script>";
     echo mysqli_error($conn);
   }
 

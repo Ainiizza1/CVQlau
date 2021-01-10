@@ -85,10 +85,6 @@
                     <!-- form start -->
                     <form method="post">
                       <div class="card-body">
-                        <!-- <div class="form-group">
-                          <label>NAMA</label>
-                          <input name="namapengguna" type="text" class="form-control" placeholder="Nama Pengguna" value="<?= $pengguna['nama'] ?>">
-                        </div> -->
                         <div class="form-group">
                           <label>USERNAME</label>
                           <input name="usernamepengguna" type="text" class="form-control" value="<?= $pengguna['username'] ?>">
@@ -105,6 +101,7 @@
                             <option <?=($pengguna['level']=="gudang")?'selected':''?> value="gudang">Bagian Gudang</option>
                             <option <?=($pengguna['level']=="keuangan")?'selected':''?> value="keuangan">Bagian Keuangan</option>
                             <option <?=($pengguna['level']=="pemilik")?'selected':''?> value="pemilik">Pemilik</option>
+                            <option <?=($pengguna['level']=="pelanggan")?'selected':''?> value="pelanggan">Pelanggan</option>
                             <option <?=($pengguna['level']=="admin")?'selected':''?> value="admin">Admin</option>
                           </select>
                         </div>  

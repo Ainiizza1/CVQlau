@@ -8,6 +8,10 @@ require_once('function_pemesanan.php');
 include_once('_partials/atas.php');
 include_once('_partials/kiri.php');
 
+$jumlah_pemesanan = jumlah_pemesanan();
+$total_sales = total_sales();
+$total_pelanggan = total_pelanggan();
+
 ?>
 
 <div class="content-wrapper">
@@ -38,7 +42,7 @@ include_once('_partials/kiri.php');
           <!-- small box -->
           <div class="small-box bg-info">
             <div class="inner">
-              <h3>150</h3>
+              <h3><?php echo $jumlah_pemesanan ?></h3>
               <p>Total Pemesanan</p>
             </div>
             <div class="icon">
@@ -51,7 +55,7 @@ include_once('_partials/kiri.php');
           <!-- small box -->
           <div class="small-box bg-success">
             <div class="inner">
-              <h3>53<sup style="font-size: 20px">%</sup></h3>
+              <h3><?php echo $total_sales  ?><sup style="font-size: 20px"></sup></h3>
               <p>Total Sales</p>
             </div>
             <div class="icon">
@@ -64,7 +68,7 @@ include_once('_partials/kiri.php');
           <!-- small box -->
           <div class="small-box bg-warning">
             <div class="inner">
-              <h3>44</h3>
+              <h3><?php echo $total_pelanggan  ?></h3>
               <p>Total Pelanggan</p>
             </div>
             <div class="icon">

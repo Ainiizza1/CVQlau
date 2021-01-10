@@ -2,13 +2,13 @@
 session_start();
 include('cek_session.php');
 require_once('../url.php'); 
-require_once('function_pemesanan.php'); 
+require_once('function_pegawai.php'); 
 
 include_once('_partials/atas.php');
 include_once('_partials/kiri.php');
 
 $id = $_GET['id'];
-$detail_sales=detail_sales($id);
+$detail_pegawai=detail_pegawai($id);
 
 ?>
 
@@ -18,12 +18,12 @@ $detail_sales=detail_sales($id);
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1 class="m-0 text-dark">Detail Sales</h1>
+          <h1 class="m-0 text-dark">Detail Pegawai</h1>
         </div><!-- /.col -->
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item active">Sales</li>
+            <li class="breadcrumb-item active">Pegawai</li>
           </ol>
         </div><!-- /.col -->
       </div><!-- /.row -->
@@ -41,7 +41,7 @@ $detail_sales=detail_sales($id);
         <section class="col connectedSortable">
           <div class="card">
             <div class="card-header">
-              <a href="sales.php" class="btn btn-default btn-sm">Kembali</a>
+              <a href="pelanggan.php" class="btn btn-default btn-sm">Kembali</a>
             </div><!-- /.card-header -->
 
             <div class="card-body">
@@ -49,54 +49,50 @@ $detail_sales=detail_sales($id);
                 <thead>
                   <tr>
                     <th>No</th>
-                    <th>Foto</th>
-                    <th>NIK</th>
                     <th>Nama</th>
-                    <th>Alamat</th>
-                    <th>id user</th>
-                    <th>No Kendaraan</th>
+                    <th>Foto</th>
+                    <th>Level</th>
+                    <th>No Telp</th>
+                    <th>Username</th>
                     <th>Aksi</th>
                   </tr>
                 </thead>
                 <tbody>
                   <?php $nomor=1; ?>
-                  <?php while ($pecah = $detail_sales->fetch_assoc()) { ?>
+                  <?php while ($pecah = $detail_pegawai->fetch_assoc()) { ?>
                     <tr>
                       <td><?php echo $nomor; ?></td>
-                      <td><img src="../img/<?php echo $pecah['foto']?>" width="200px" height="200px"></td>
-                      <td><?php echo $pecah['nik']; ?></td>
-                      <td><?php echo $pecah['nama_sales']; ?></td>
-                      
-                      <td><?php echo $pecah['alamat']; ?></td>
+                      <td><?php echo $pecah['nama_lengkap']; ?></td>
+                      <td><?php echo $pecah['foto']; ?></td>
+                      <td><?php echo $pecah['level']; ?></td>
+                      <td><?php echo $pecah['telp']; ?></td>
                       <td><?php echo $pecah['username']; ?></td>
-                      <td><?php echo $pecah['plat']; ?></td>
                       <td>
-                        <a href="sales_hapus.php?id=<?= $pecah['id_sales']; ?>" class="btn-danger btn">Hapus</a>
-                        <a href="sales_ubah.php?id=<?= $pecah['id_sales']; ?>" class="btn btn-warning">Ubah</a>
+                        <a href="pegawai_hapus.php?id=<?= $pecah['id_pegawai']; ?>" class="btn-danger btn">Hapus</a>
+                        <a href="pegawai_ubah.php?id=<?= $pecah['id_pegawai']; ?>" class="btn btn-warning">Ubah</a>
                       </td>
                     </tr>
                     <?php $nomor++ ?>
                   <?php } ?>
                 </tbody>
                 <tfoot>
-                  <th>No</th>
-                  <th>Foto</th>
-                  <th>NIK</th>
-                  <th>Nama</th>
-                  <th>Alamat</th>
-                  <th>id user</th>
-                  <th>No Kendaraan</th>
-                  <th>Aksi</th>
-                </tfoot>
-              </table>
-            </div>
-          </div>
-        </section>
-      </div>
-      <!-- /.row (main row) -->
-    </div><!-- /.container-fluid -->
-  </section>
-  <!-- /.content -->
+                 <th>No</th>
+                 <th>Nama</th>
+                 <th>Foto</th>
+                 <th>Level</th>
+                 <th>No Telp</th>
+                 <th>Username</th>
+                 <th>Aksi</th>
+               </tfoot>
+             </table>
+           </div>
+         </div>
+       </section>
+     </div>
+     <!-- /.row (main row) -->
+   </div><!-- /.container-fluid -->
+ </section>
+ <!-- /.content -->
 </div>
 
 <?php include_once('_partials/bawah.php'); ?>
