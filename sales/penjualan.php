@@ -17,12 +17,12 @@ $penjualan = data_penjualan_sales();
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1 class="m-0 text-dark">Penjualan</h1>
+          <h1 class="m-0 text-dark">Pemesanan</h1>
         </div><!-- /.col -->
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item active">Penjualan</li>
+            <li class="breadcrumb-item active">Pemesanan</li>
           </ol>
         </div><!-- /.col -->
       </div><!-- /.row -->
@@ -40,7 +40,7 @@ $penjualan = data_penjualan_sales();
         <section class="col connectedSortable">
           <div class="card">
             <div class="card-header">
-              <a href="penjualan_tambah.php" class="btn btn-primary btn-sm">Tambah</a>
+              <a href="pemesanan_tambah.php" class="btn btn-primary btn-sm">Tambah</a>
             </div><!-- /.card-header -->
             
             <div class="card-body">
@@ -49,24 +49,23 @@ $penjualan = data_penjualan_sales();
                   <tr>
                     <th>No</th>
                     <th>Tanggal</th>
-                    <th>Jumlah Setor</th>
+                    <th>Status</th>
                     <th>Aksi</th>
                   </tr>
                 </thead>
                 <tbody>
                   <?php $nomor=1; ?>
-                  <?php while ($pecah = $penjualan->fetch_assoc()) { ?>
-                    <tr>
-                      <td><?php echo $nomor; ?></td>
-                      <td><?php echo date('d-m-Y', strtotime($pecah['tgl_setor'])); ?></td>
-                      <td><?php echo $pecah['tgl_setor']; ?></td>
-                      <td>
-                        <a href="penjualan_detail.php?id=<?=$pecah['id_penjualan']?>" class="btn btn-primary btn-sm">Detail</a>
-                        <?=$button?>
-                      </td>
-                    </tr>
-                    <?php $nomor++ ?>
-                  <?php } ?>
+                  <?php while ($pecah = $penjualan->fetch_assoc()) ?>
+                  <tr>
+                    <td><?php echo $nomor; ?></td>
+                    <td><?php echo date('d-m-Y', strtotime($pecah['tgl_pemesanan'])); ?></td>
+                    <td><?php echo $status_pemesanan ?></td>
+                    <td>
+                      <a href="pemesanan_detail.php?id=<?=$pecah['id_pemesanan']?>" class="btn btn-primary btn-sm">Detail</a>
+                      <?=$button?>
+                    </td>
+                  </tr>
+                  <?php $nomor++ ?>
                 </tbody>
               </table>
             </div>

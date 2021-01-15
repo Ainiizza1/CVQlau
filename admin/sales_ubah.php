@@ -27,7 +27,7 @@
       'foto'=> $nama_foto,
       'alamat'=> $_POST['alamat'],
       'username'=> $_POST['username'],
-      'password'=>$_POST['password']
+      'password'=> password_hash($_POST['password'],PASSWORD_DEFAULT)
     ];
     // var_dump($data);die();  
     if (ubahsales($data) > 0) {

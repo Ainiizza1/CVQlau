@@ -7,27 +7,23 @@
   include_once('_partials/atas.php');
   include_once('_partials/kiri.php');
 
-  $id_pegawai = $_GET["id"];
-  $profil = profil_pribadi();
+  $id_pelanggan = $_GET["id"];
+  $profil = profil_pelanggan();
 
   if (isset($_POST['ubah'])) 
   {
-    $nama_foto = $_FILES['foto']['name'];
-    $lokasi = $_FILES['foto']['tmp_name'];
 
     $data = [
-      'id_pegawai'=> $_POST['id_pegawai'],
+      'id_pelanggan'=> $_POST['id_pelanggan'],
       'id_profil'=> $_POST['id'],
-      'nama_lengkap'=> $_POST['nama'],
-      'telp'=> $_POST['telp'],
-      'foto'=> $nama_foto,
+      'nama_pelanggan'=> $_POST['nama'],
+      'telepon_pelanggan'=> $_POST['telp'],
       'username'=> $_POST['username']
 
     ];
 
     // var_dump($data);die;
     if (ubahprofil($data) > 0) {
-      move_uploaded_file($lokasi, "../img/".$nama_foto);
 
       echo "<script>
       alert('Data Profil Berhasil Diubah');
@@ -90,27 +86,22 @@
                     <form method="post" enctype="multipart/form-data">
                       <div class="card-body">
                         <div class="form-group">
-                          <label>Nama User</label>
-                          <input name="nama" type="text" class="form-control" required="" value="<?= $profil["nama_lengkap"]; ?>">
+                          <label>Nama Pelanggan</label>
+                          <input name="nama" type="text" class="form-control" required="" value="<?= $profil["nama_pelanggan"]; ?>">
                         </div>  
                         <div class="form-group">
                           <label>No Telepon</label>
-                          <input name="telp" type="text" class="form-control" required="" value="<?= $profil["telp"]; ?>">
+                          <input name="telp" type="text" class="form-control" required="" value="<?= $profil["telepon_pelanggan"]; ?>">
                         </div>  
                         <div class="form-group">
                           <label>Username</label>
                           <input name="username" type="text" class="form-control" required="" value="<?= $profil["username"]; ?>">
                         </div>  
-                        <div class="form-group">
-                          <img src="../img/<?php echo $profil["foto"] ?>" width=200>
-                          <label>Foto</label>
-                          <input name="foto" type="file" class="form-control">
-                        </div>
                       </div>
                       <!-- /.card-body -->
                       <div class="card-footer">
                         <input name="id" type="hidden" class="form-control" placeholder="id" value="<?= $profil["id"]; ?>">
-                        <input name="id_pegawai" type="hidden" class="form-control" placeholder="id" value="<?= $profil["id_pegawai"]; ?>">
+                        <input name="id_pelanggan" type="hidden" class="form-control" placeholder="id" value="<?= $profil["id_pelanggan"]; ?>">
                         <button type="submit" class="btn btn-primary" name="ubah">Ubah</button>
                       </div>
                     </form>

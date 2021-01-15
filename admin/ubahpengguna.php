@@ -21,7 +21,6 @@
       'username'=>$_POST['usernamepengguna'],
       'password'=>$_POST['passwordpengguna'],
       'level'=>$_POST['levelpengguna'],
-      // 'nama'=>$_POST['namapengguna'],
       'status'=>$_POST['statuspengguna']
     ];
     // var_dump($data);die();  

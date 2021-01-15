@@ -53,7 +53,7 @@ $detail_sales=detail_sales($id);
                     <th>NIK</th>
                     <th>Nama</th>
                     <th>Alamat</th>
-                    <th>id user</th>
+                    <th>Username</th>
                     <th>No Kendaraan</th>
                     <th>Aksi</th>
                   </tr>
@@ -84,7 +84,7 @@ $detail_sales=detail_sales($id);
                   <th>NIK</th>
                   <th>Nama</th>
                   <th>Alamat</th>
-                  <th>id user</th>
+                  <th>Username</th>
                   <th>No Kendaraan</th>
                   <th>Aksi</th>
                 </tfoot>

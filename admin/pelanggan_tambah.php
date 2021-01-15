@@ -83,6 +83,14 @@
                           <input name="nohppelanggan" type="text" class="form-control" placeholder="No Hp / Telp">
                         </div>
                         <div class="form-group">
+                          <label>Username</label>
+                          <input name="username" type="text" class="form-control" required="" placeholder="Username">
+                        </div>    
+                        <div class="form-group">
+                          <label>Password</label>
+                          <input name="password" type="password" class="form-control" required="" placeholder="Password">
+                        </div>    
+                        <div class="form-group">
                           <label>STATUS</label>
                           <select class="form-control selectlive" name="statuspelanggan" required>
                             <option selected disabled>Silahkan Dipilih</option>
@@ -108,16 +116,30 @@
                       $kecamatanpelanggan = $_POST['kecamatanpelanggan'];
                       $nohppelanggan = $_POST['nohppelanggan'];
                       $statuspelanggan = $_POST['statuspelanggan'];
+                      $username = $_POST['username'];
+                      $password = password_hash($_POST['password'],PASSWORD_DEFAULT);
 
-                      $ambil = $conn->query("INSERT INTO t_pelanggan (kode_pelanggan, nama_pelanggan, alamat_pelanggan, kota, kecamatan, telepon_pelanggan, status)
-                        VALUES('$kodepelanggan', '$namapelanggan', '$alamatpelanggan', '$kotapelanggan', '$kecamatanpelanggan', '$nohppelanggan', '$statuspelanggan')");
-                      if ($ambil) {
-                        echo "<button type='button' class='btn btn-success toastrDefaultSuccess'>Data Pelanggan Berhasil Disimpan</button>";
-                        echo "<script> location='pelanggan.php'; </script>";
-                      } else {
-                        echo mysqli_error($conn);                        
+                      $insert_user =  $conn->query("INSERT INTO t_users (username, password, level, status) VALUES ('$username','$password','pelanggan','1')");
+
+                      if ($insert_user) {
+                        $user_terakhir =  $conn->query("SELECT * FROM t_users ORDER BY id DESC limit 1");
+                        $id_user = $user_terakhir->fetch_assoc()['id'];
+
+                        $insert_sales = $conn->query("INSERT INTO t_pelanggan (kode_pelanggan, nama_pelanggan, alamat_pelanggan, kota, kecamatan, telepon_pelanggan, status, id_user)
+
+                          VALUES('$kodepelanggan', '$namapelanggan', '$alamatpelanggan', '$kotapelanggan', '$kecamatanpelanggan', '$nohppelanggan', '$statuspelanggan', '$id_user')");
+                        if ($insert_sales) {
+                          echo "<button type='button' class='btn btn-success toastrDefaultSuccess'>Data Pelanggan Berhasil Ditambahka<n/button>";
+                          echo "<script> location='pelanggan.php'; </script>";
+                        } else {
+                          echo mysqli_error($conn);
+                        }
+                      } else{
+                        echo mysqli_error($conn);
                       }
                     }
+
+
 
                     ?>
 

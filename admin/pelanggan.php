@@ -51,19 +51,19 @@
                       <th>No</th>
                       <th>Kode Pelanggan</th>
                       <th>Nama Pelanggan</th>
-                      <th>No Telp</th>
+                      <th>Username</th>
                       <th>Aksi</th>
                     </tr>
                   </thead>
                   <tbody>
                    <?php $nomor=1; ?>
-                   <?php $ambil = $conn->query("SELECT * FROM t_pelanggan"); ?>
+                   <?php $ambil = $conn->query("SELECT * FROM t_pelanggan JOIN t_users ON t_pelanggan.id_user = t_users.id "); ?>
                    <?php while ($pecah = $ambil->fetch_assoc()) { ?>
                     <tr>
                      <td><?php echo $nomor; ?></td>
                      <td><?php echo $pecah['kode_pelanggan']; ?></td>
                      <td><?php echo $pecah['nama_pelanggan']; ?></td>
-                     <td><?php echo $pecah['telepon_pelanggan']; ?></td>
+                     <td><?php echo $pecah['username']; ?></td>
                      <td>
                       <a href="pelanggan_detail.php?id=<?= $pecah['id_pelanggan']; ?>" class="btn-primary btn">Detail</a>
                     </td>

@@ -63,7 +63,7 @@ $detail_pegawai=detail_pegawai($id);
                     <tr>
                       <td><?php echo $nomor; ?></td>
                       <td><?php echo $pecah['nama_lengkap']; ?></td>
-                      <td><?php echo $pecah['foto']; ?></td>
+                      <td><img src="../img/<?php echo $pecah['foto']?>" width="200px" height="200px"></td>
                       <td><?php echo $pecah['level']; ?></td>
                       <td><?php echo $pecah['telp']; ?></td>
                       <td><?php echo $pecah['username']; ?></td>

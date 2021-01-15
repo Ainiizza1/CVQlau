@@ -1,4 +1,16 @@
-<aside class="main-sidebar sidebar-dark-primary elevation-4">
+ <?php 
+ include('cek_session.php');
+ require_once('../url.php'); 
+ require_once('function_profil.php'); 
+
+ include_once('_partials/atas.php');
+ include_once('_partials/kiri.php');
+
+ $profil = profil_pelanggan();
+
+ ?>
+
+ <aside class="main-sidebar sidebar-dark-primary elevation-4">
   <!-- Brand Logo -->
   <a href="<?=$url?>pelanggan/index.php" class="brand-link">
     <img src="<?=$url?>img/Logo.png" alt="CVQlau Logo" class="brand-image img-circle elevation-3"
@@ -14,7 +26,7 @@
         <img src="<?=$url?>pelanggan/assets/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
       </div>
       <div class="info">
-        <a href="<?=$url?>pelanggan/profil.php" class="d-block">Pelanggan Perusahaan</a>
+        <a href="<?=$url?>pelanggan/profil.php" class="d-block"><b><?= $profil["nama_pelanggan"]; ?></b><br> (<?= $profil["level"]; ?>)</a>
       </div>
     </div>
 

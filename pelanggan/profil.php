@@ -7,7 +7,7 @@ require_once('function_profil.php');
 include_once('_partials/atas.php');
 include_once('_partials/kiri.php');
 
-$profil = profil_pribadi();
+$profil = profil_pelanggan();
 ?>
 
 <div class="content-wrapper">
@@ -48,18 +48,16 @@ $profil = profil_pribadi();
               <div class="col-md-3">
                 <div class="card card-primary card-outline">
                   <div class="card-body box-profile">
-                    <div class="text-center">
-                      <img class="profile-user-img img-fluid img-circle" src="assets/dist/img/<?php echo $profil['foto']; ?>" alt="User profile picture">
-                    </div>
-                    <h3 class="profile-username text-center"><?=$profil['nama_lengkap'];?></h3>
-                    <p class="text-muted text-center"><?=$profil['level'];?></p>
+                    <h3 class="profile-username text-center"><?= $profil['nama_pelanggan']; ?></h3>
                     <ul class="list-group list-group-unbordered mb-3">
                       <li class="list-group-item">
-                        <b>Username</b> <a class="float-right"><?=$profil['username'];?></a>
+                        <b>Username</b> <a class="float-right"><?=$profil['username'];?></a><br>
+                        <b>Level</b> <a class="float-right">Pelanggan</a><br>
+                        <b>No Telepon</b> <a class="float-right"><?=$profil['telepon_pelanggan'];?></a>
                       </li>
                     </ul>
-                    <a href="ubahprofil.php" class="btn btn-primary btn-block"><b>Ubah Data</b></a>
-                    <a href="ubahpassword.php" class="btn btn-primary btn-block"><b>Ubah Password</b></a>
+                    <a href="profil_ubah.php?id=<?= $profil['id']; ?>" class="btn btn-primary btn-block"><b>Ubah Data</b></a>
+                    <a href="profil_ubahpassword.php?id=<?= $profil['id']; ?>" class="btn btn-primary btn-block"><b>Ubah Password</b></a>
                   </div>
                   <!-- /.card-body -->
                 </div>

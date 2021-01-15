@@ -10,23 +10,27 @@
   
   $id_pelanggan = $_GET["id"];
 
-  $result = mysqli_query($conn,"SELECT * FROM t_pelanggan WHERE id_pelanggan=$id_pelanggan");
+  $result = mysqli_query($conn,"SELECT * FROM t_pelanggan JOIN t_users ON t_pelanggan.id_user = t_users.id WHERE id_pelanggan=$id_pelanggan");
   $pelanggan = mysqli_fetch_assoc($result);
   // var_dump($produk);
   
   if (isset($_POST['ubah'])) 
   {
     $data = [
-      'idpelanggan'=>$id_pelanggan,
+      'id_pelanggan'=>$id_pelanggan,
+      'id_user'=> $_POST['id_user'],
       'kodepelanggan'=>$_POST['kodepelanggan'],
       'namapelanggan'=>$_POST['namapelanggan'],
       'alamat'=>$_POST['alamat'],
       'nohp'=>$_POST['nohp'],
       'kecamatan'=>$_POST['kecamatan'],
       'kota'=>$_POST['kota'],
-      'status'=>$_POST['status']
+      'status'=>$_POST['status'],
+      'username'=> $_POST['username'],
+      'password'=> password_hash($_POST['password'],PASSWORD_DEFAULT)
     ];
     // var_dump($data);die();  
+
     if (ubahpelanggan($data) > 0) {
       echo "<script>
       alert('Data Pelanggan Berhasil Diubah');
@@ -34,8 +38,8 @@
       </script>";
     } else {
       echo "<script>
-      alert('Data Pelanggan Berhasil Diubah');
-      document.location.href = 'Pelanggan.php';
+      alert('Data Pelanggan Gagal Diubah');
+      document.location.href = 'pelanggan.php';
       </script>";
     }
   } 
@@ -119,12 +123,21 @@
                           <input name="nohp" type="text" class="form-control" value="<?= $pelanggan["telepon_pelanggan"]; ?>">
                         </div>  
                         <div class="form-group">
+                          <label>Username</label>
+                          <input name="username" type="text" class="form-control" required="" value="<?= $pelanggan["username"]; ?>">
+                        </div>    
+                        <div class="form-group">
+                          <label>Password</label>
+                          <input name="password" type="password" class="form-control" placeholder="Password">
+                        </div>    
+                        <div class="form-group">
                           <label>STATUS</label>
                           <input name="status" type="text" class="form-control" value="<?= $pelanggan["status"]; ?>">
                         </div>  
                       </div>
                       <!-- /.card-body -->
                       <div class="card-footer">
+                        <input name="id_user" type="hidden" class="form-control" placeholder="id_user" value="<?= $pelanggan["id_user"]; ?>">
                         <button type="submit" class="btn btn-primary" name="ubah">Ubah Data</button>
                       </div>
                     </form>

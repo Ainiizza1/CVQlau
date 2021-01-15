@@ -61,7 +61,6 @@ function total_produk()
     
 }
 
-
 function total_penjualan()
 {
     global $conn;
