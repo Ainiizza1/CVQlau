@@ -6,9 +6,9 @@ function data_penjualan_sales($id = null)
 {
     global $conn;
     $id_sales = $_SESSION['id'];
-    $query = "SELECT * FROM t_penjualan JOIN t_pemesanan ON t_penjualan.id_pemesanan = t_pemesanan.id_pemesanan WHERE id_sales =  '$id_sales' ORDER BY tgl_setor DESC";
+    $query = "SELECT * FROM t_penjualan JOIN t_pemesanan ON t_penjualan.id_pemesanan = t_pemesanan.id_pemesanan WHERE t_penjualan.id_sales =  '$id_sales' ORDER BY tgl_setor DESC";
     if ($id) {
-        $query = "SELECT * FROM t_penjualan JOIN t_pemesanan ON t_penjualan.id_pemesanan = t_pemesanan.id_pemesanan WHERE id_sales =  '$id_sales' and id_penjualan = '$id'";
+        $query = "SELECT * FROM t_penjualan JOIN t_pemesanan ON t_penjualan.id_pemesanan = t_pemesanan.id_pemesanan WHERE t_penjualan.id_sales =  '$id_sales' and id_penjualan = '$id'";
     }
     // var_dump($query);die();
     $result = mysqli_query($conn, $query);

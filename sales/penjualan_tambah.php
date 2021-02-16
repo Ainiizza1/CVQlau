@@ -130,11 +130,13 @@
 
                   <?php
                   if (isset($_POST['tambah'])) {
+                    // var_dump($_POST);die();
                     $id_pemesanan = $_POST['id_pemesanan'];
+                    $id_sales = $_POST['id_sales'];
                     $tgl_setor = $_POST['tgl_setor'];
                     $jumlah_setor = 0;
-                    $ambil = $conn->query("INSERT INTO t_penjualan (id_pemesanan,tgl_setor,jumlah_setor)
-                        VALUES('$id_pemesanan','$tgl_setor', '$jumlah_setor')");
+                    $ambil = $conn->query("INSERT INTO t_penjualan (id_pemesanan,tgl_setor,jumlah_setor,id_sales)
+                        VALUES('$id_pemesanan','$tgl_setor', '$jumlah_setor','$id_sales')");
                     if ($ambil == true) {
                       $result = mysqli_query($conn, "SELECT id_penjualan FROM t_penjualan ORDER BY id_penjualan DESC LIMIT 1");
                       $id_penjualan = $result->fetch_assoc()['id_penjualan'];

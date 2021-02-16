@@ -65,7 +65,7 @@ $penjualan = data_penjualan_sales();
                     <td>
                       <a href="penjualan_detail.php?id=<?=$pecah['id_penjualan']?>" class="btn btn-primary btn-sm">Detail</a>
                       <a href="penjualan_ubah.php?id=<?=$pecah['id_penjualan']?>" class="btn btn-warning btn-sm">Ubah</a>
-                      <a href="penjualan_hapus.php?id=<?=$pecah['id_penjualan']?>" class="btn btn-danger btn-sm">Hapus</a>
+                      <a href="penjualan_hapus.php?id=<?=$pecah['id_penjualan']?>" onclick="return confirm('Anda yakin mau menghapus item ini ?')" class="btn btn-danger btn-sm">Hapus</a>
                     </td>
                   </tr>
                   <?php $nomor++; }?>

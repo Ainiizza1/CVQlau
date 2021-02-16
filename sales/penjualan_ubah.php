@@ -122,7 +122,7 @@
 
                   <?php
                   if (isset($_POST['ubah'])) {
-                    var_dump($_POST);
+                    // var_dump($_POST);
                     // die();
                     $id_penjualan = $_POST['id_penjualan'];
                     $id_pemesanan = $_POST['id_pemesanan'];
@@ -142,6 +142,11 @@
                     }
                     if (!$error) {
                       $ambil = $conn->query("UPDATE t_penjualan SET jumlah_setor='$jumlah_setor' WHERE id_penjualan='$id_penjualan'");
+                      echo "<button type='button' class='btn btn-success toastrDefaultSuccess'>Data Penjualan Berhasil Diperbarui</button>";
+                      echo "<script> location='penjualan.php'; </script>";
+                    } else {
+                      echo "Error : " . mysqli_error($conn);
+                    
                     }
                   }
 
