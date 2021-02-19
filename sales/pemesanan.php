@@ -59,9 +59,9 @@ $pemesanan = data_pemesanan_sales();
                       $status_pemesanan = "Belum Dikonfirmasi";
                       $button = "<a href='pemesanan_ubah.php?id=".$pecah['id_pemesanan']."' class='btn btn-warning btn-sm'>Ubah</a>
                       <a href='pemesanan_hapus.php?id=".$pecah['id_pemesanan']."' class='btn btn-danger btn-sm'>hapus</a>";
-                    } else if ($pecah['status'] == "Belum Dikonfirmasi" && $pecah['ket_status'] == "keuangan") {
-                      $status_pemesanan = "Belum Dikonfirmasi, tapi sudah di Acc Keuangan";
-                      $button = "<a href='pemesanan_ubah.php?id=".$pecah['id_pemesanan']."' class='btn btn-warning btn-sm'>Ubah</a>";
+                    } else if ($pecah['status'] == "Telah Dibayar" && $pecah['ket_status'] == "keuangan") {
+                      $status_pemesanan = "Pesanan Selesai";
+                      $button = "";
                     } else if ($pecah['status'] == "Telah Dikonfirmasi" && $pecah['ket_status'] == "gudang") {
                       $status_pemesanan = "Telah Dikonfirmasi";
                       $button = "";

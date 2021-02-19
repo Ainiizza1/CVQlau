@@ -128,7 +128,7 @@
                       // var_dump($jumlah_data);die();
                       $id_sales = $_SESSION['id'];
                       // var_dump($id_sales);
-                      $tgl_pesan = date("Y-m-d h:i:sa");
+                      $tgl_pesan = date("Y-m-d h:i:s");
                       $status = "Belum Dikonfirmasi";
                       $ambil = $conn->query("INSERT INTO t_pemesanan (id_sales,tgl_pemesanan,status)
                         VALUES('$id_sales','$tgl_pesan', '$status')");

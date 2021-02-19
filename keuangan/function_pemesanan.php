@@ -88,3 +88,14 @@ function total_pelanggan()
     return $pelanggan;
     
 }
+
+function konfirmasi_pemesanan($id_pemesanan) {
+    $id = $_SESSION['id'];
+    $ket_status = "keuangan";
+    $status = "Telah Dibayar";
+    global $conn;
+    $result = mysqli_query($conn, "UPDATE t_pemesanan SET  id_pegawai = '$id' , ket_status = '$ket_status', status='$status' WHERE id_pemesanan = '$id_pemesanan'");
+    $result = mysqli_query($conn, "UPDATE t_penjualan SET  id_pegawai = '$id' WHERE id_pemesanan = '$id_pemesanan'");
+    
+    return $result;
+}

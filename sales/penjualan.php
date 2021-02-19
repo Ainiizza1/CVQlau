@@ -1,8 +1,8 @@
-<?php 
+<?php
 session_start();
 include('cek_session.php');
-require_once('../url.php'); 
-require_once('function_penjualan.php'); 
+require_once('../url.php');
+require_once('function_penjualan.php');
 
 include_once('_partials/atas.php');
 include_once('_partials/kiri.php');
@@ -42,7 +42,7 @@ $penjualan = data_penjualan_sales();
             <div class="card-header">
               <a href="penjualan_tambah.php" class="btn btn-primary btn-sm">Tambah</a>
             </div><!-- /.card-header -->
-            
+
             <div class="card-body">
               <table id="example1" class="table table-bordered table-hover">
                 <thead>
@@ -55,20 +55,23 @@ $penjualan = data_penjualan_sales();
                   </tr>
                 </thead>
                 <tbody>
-                  <?php $nomor=1; ?>
+                  <?php $nomor = 1; ?>
                   <?php while ($pecah = $penjualan->fetch_assoc()) { ?>
-                  <tr>
-                    <td><?php echo $nomor; ?></td>
-                    <td><?php echo date('d-m-Y', strtotime($pecah['tgl_pemesanan'])); ?></td>
-                    <td><?php echo date('d-m-Y', strtotime($pecah['tgl_setor'])); ?></td>
-                    <td><?php echo 'Rp ' . number_format($pecah['jumlah_setor'], 0, ',', '.'); ?></td>
-                    <td>
-                      <a href="penjualan_detail.php?id=<?=$pecah['id_penjualan']?>" class="btn btn-primary btn-sm">Detail</a>
-                      <a href="penjualan_ubah.php?id=<?=$pecah['id_penjualan']?>" class="btn btn-warning btn-sm">Ubah</a>
-                      <a href="penjualan_hapus.php?id=<?=$pecah['id_penjualan']?>" onclick="return confirm('Anda yakin mau menghapus item ini ?')" class="btn btn-danger btn-sm">Hapus</a>
-                    </td>
-                  </tr>
-                  <?php $nomor++; }?>
+                    <tr>
+                      <td><?php echo $nomor; ?></td>
+                      <td><?php echo date('d-m-Y', strtotime($pecah['tgl_pemesanan'])); ?></td>
+                      <td><?php echo date('d-m-Y', strtotime($pecah['tgl_setor'])); ?></td>
+                      <td><?php echo 'Rp ' . number_format($pecah['jumlah_setor'], 0, ',', '.'); ?></td>
+                      <td>
+                        <a href="penjualan_detail.php?id=<?= $pecah['id_penjualan'] ?>" class="btn btn-primary btn-sm">Detail</a>
+                        <?php if (!$pecah['id_pegawai']) { ?>
+                          <a href="penjualan_ubah.php?id=<?= $pecah['id_penjualan'] ?>" class="btn btn-warning btn-sm">Ubah</a>
+                          <a href="penjualan_hapus.php?id=<?= $pecah['id_penjualan'] ?>" onclick="return confirm('Anda yakin mau menghapus item ini ?')" class="btn btn-danger btn-sm">Hapus</a>
+                        <?php } ?>
+                      </td>
+                    </tr>
+                  <?php $nomor++;
+                  } ?>
                 </tbody>
               </table>
             </div>
@@ -82,4 +85,3 @@ $penjualan = data_penjualan_sales();
 </div>
 
 <?php include_once('_partials/bawah.php'); ?>
-

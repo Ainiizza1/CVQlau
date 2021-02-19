@@ -58,6 +58,7 @@ include_once('_partials/kiri.php');
                   <?php while ($pecah = $ambil->fetch_assoc()) {
                     if ($pecah['ket_status'] == null) {
                       $status_pemesanan = "Belum Dikonfirmasi";
+                      $button_konfirmasi = "<a href='konfirmasi_pemesanan.php?id=" . $pecah['id_pemesanan'] . "' class='btn-success btn'>Konfirmasi</a>";
                     } else if ($pecah['ket_status'] == "keuangan") {
                       $status_pemesanan = "Sudah Dikonfirmasi";
                       $button_konfirmasi = "";
@@ -72,6 +73,7 @@ include_once('_partials/kiri.php');
                       <td><?php echo $status_pemesanan; ?></td>
                       <td>
                         <a href="pemesanan_detail.php?id=<?= $pecah['id_pemesanan']; ?>" class="btn-primary btn">Detail</a>
+                        <?= $button_konfirmasi; ?>
                       </td>
                     </tr>
                     <?php $nomor++ ?>

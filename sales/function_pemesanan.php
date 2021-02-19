@@ -77,7 +77,7 @@ function tampil_pesanan_aktif_sales()
 {
     global $conn;
     $id_sales = $_SESSION['id'];
-    $query = "SELECT * FROM t_pemesanan where id_sales = '$id_sales' order by tgl_pemesanan DESC ";
+    $query = "SELECT * FROM t_pemesanan where id_sales = '$id_sales' AND status='Telah Dikonfirmasi' order by tgl_pemesanan DESC ";
     $result = mysqli_query($conn, $query);
     return $result;
 }

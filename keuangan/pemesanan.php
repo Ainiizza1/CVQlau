@@ -56,16 +56,20 @@ include_once('_partials/kiri.php');
                   <?php $nomor = 1; ?>
                   <?php $ambil = $conn->query("SELECT * FROM t_pemesanan JOIN t_users ON t_pemesanan.id_sales = t_users.id JOIN t_sales ON t_sales.id_user = t_users.id WHERE level='sales'"); ?>
                   <?php while ($pecah = $ambil->fetch_assoc()) {
+                    $penjualan = $conn->query("SELECT * FROM t_penjualan WHERE id_pemesanan = '".$pecah['id_pemesanan']."'");
                     if ($pecah['ket_status'] == null) {
                       $status_pemesanan = "Belum Dikonfirmasi";
+                      $button_konfirmasi = "";
+                    } else if ($penjualan->fetch_assoc() && $pecah['ket_status'] == "gudang"){
+                      $status_pemesanan = "Sudah Dibayar";
                       $button_konfirmasi = "<a href='konfirmasi_pemesanan.php?id=" . $pecah['id_pemesanan'] . "' class='btn-success btn'>Konfirmasi</a>";
                     } else if ($pecah['ket_status'] == "keuangan") {
-                      $status_pemesanan = "Sudah Dikonfirmasi";
+                      $status_pemesanan = "Sudah Dibayar";
                       $button_konfirmasi = "";
                     } else if ($pecah['ket_status'] == "gudang") {
                       $status_pemesanan = "Telah Dikonfirmasi Gudang";
                       $button_konfirmasi = "";
-                    }
+                    } 
                     ?>
                     <tr>
                       <td><?php echo $nomor; ?></td>
