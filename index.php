@@ -17,7 +17,8 @@ if (isset($_SESSION['login'])) {
             header("Location: gudang/index.php");
         } elseif ($_SESSION['level']=="pelanggan") {
             header("Location: pelanggan/index.php");
-        } 
+        }
+        exit(); 
     }
 }
 if (isset($_POST["login"])) {
