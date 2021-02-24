@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 4.4.14
--- http://www.phpmyadmin.net
+-- version 5.0.4
+-- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: 15 Jan 2021 pada 08.11
--- Versi Server: 5.6.26
--- PHP Version: 5.6.12
+-- Host: localhost
+-- Generation Time: Feb 16, 2021 at 10:05 PM
+-- Server version: 10.4.17-MariaDB
+-- PHP Version: 7.4.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -23,10 +24,10 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `t_detail_pemesanan`
+-- Table structure for table `t_detail_pemesanan`
 --
 
-CREATE TABLE IF NOT EXISTS `t_detail_pemesanan` (
+CREATE TABLE `t_detail_pemesanan` (
   `id_pemesanan` int(11) DEFAULT NULL,
   `id_produk` int(11) DEFAULT NULL,
   `qty_ambil` int(11) DEFAULT NULL,
@@ -34,7 +35,7 @@ CREATE TABLE IF NOT EXISTS `t_detail_pemesanan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `t_detail_pemesanan`
+-- Dumping data for table `t_detail_pemesanan`
 --
 
 INSERT INTO `t_detail_pemesanan` (`id_pemesanan`, `id_produk`, `qty_ambil`, `ket`) VALUES
@@ -48,34 +49,43 @@ INSERT INTO `t_detail_pemesanan` (`id_pemesanan`, `id_produk`, `qty_ambil`, `ket
 (16, 10, 2, NULL),
 (16, 9, 2, NULL),
 (18, 14, 2, NULL),
-(19, 14, 3, NULL);
+(19, 14, 3, NULL),
+(20, 9, 9, NULL);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `t_detail_penjualan`
+-- Table structure for table `t_detail_penjualan`
 --
 
-CREATE TABLE IF NOT EXISTS `t_detail_penjualan` (
+CREATE TABLE `t_detail_penjualan` (
   `id_penjualan` int(11) DEFAULT NULL,
   `id_produk` int(11) DEFAULT NULL,
   `qty_terjual` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `t_detail_penjualan`
+--
+
+INSERT INTO `t_detail_penjualan` (`id_penjualan`, `id_produk`, `qty_terjual`) VALUES
+(3, 9, 8),
+(4, 9, 8);
+
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `t_jproduk`
+-- Table structure for table `t_jproduk`
 --
 
-CREATE TABLE IF NOT EXISTS `t_jproduk` (
+CREATE TABLE `t_jproduk` (
   `id_jproduk` int(11) NOT NULL,
   `kode_jproduk` varchar(50) DEFAULT NULL,
   `namajenis_jproduk` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `t_jproduk`
+-- Dumping data for table `t_jproduk`
 --
 
 INSERT INTO `t_jproduk` (`id_jproduk`, `kode_jproduk`, `namajenis_jproduk`) VALUES
@@ -93,18 +103,18 @@ INSERT INTO `t_jproduk` (`id_jproduk`, `kode_jproduk`, `namajenis_jproduk`) VALU
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `t_kendaraan`
+-- Table structure for table `t_kendaraan`
 --
 
-CREATE TABLE IF NOT EXISTS `t_kendaraan` (
+CREATE TABLE `t_kendaraan` (
   `id_kendaraan` int(11) NOT NULL,
   `nama_kendaraan` varchar(50) NOT NULL,
   `plat` varchar(50) NOT NULL,
   `warna` varchar(50) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `t_kendaraan`
+-- Dumping data for table `t_kendaraan`
 --
 
 INSERT INTO `t_kendaraan` (`id_kendaraan`, `nama_kendaraan`, `plat`, `warna`) VALUES
@@ -124,19 +134,19 @@ INSERT INTO `t_kendaraan` (`id_kendaraan`, `nama_kendaraan`, `plat`, `warna`) VA
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `t_pegawai`
+-- Table structure for table `t_pegawai`
 --
 
-CREATE TABLE IF NOT EXISTS `t_pegawai` (
+CREATE TABLE `t_pegawai` (
   `id_pegawai` int(11) NOT NULL,
   `nama_lengkap` varchar(255) DEFAULT NULL,
   `telp` varchar(15) DEFAULT NULL,
   `id_user` int(11) DEFAULT NULL,
   `foto` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `t_pegawai`
+-- Dumping data for table `t_pegawai`
 --
 
 INSERT INTO `t_pegawai` (`id_pegawai`, `nama_lengkap`, `telp`, `id_user`, `foto`) VALUES
@@ -147,10 +157,10 @@ INSERT INTO `t_pegawai` (`id_pegawai`, `nama_lengkap`, `telp`, `id_user`, `foto`
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `t_pelanggan`
+-- Table structure for table `t_pelanggan`
 --
 
-CREATE TABLE IF NOT EXISTS `t_pelanggan` (
+CREATE TABLE `t_pelanggan` (
   `id_pelanggan` int(11) NOT NULL,
   `kode_pelanggan` varchar(7) NOT NULL,
   `nama_pelanggan` varchar(50) NOT NULL,
@@ -160,10 +170,10 @@ CREATE TABLE IF NOT EXISTS `t_pelanggan` (
   `kecamatan` varchar(100) NOT NULL,
   `status` int(11) NOT NULL,
   `id_user` int(11) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `t_pelanggan`
+-- Dumping data for table `t_pelanggan`
 --
 
 INSERT INTO `t_pelanggan` (`id_pelanggan`, `kode_pelanggan`, `nama_pelanggan`, `alamat_pelanggan`, `telepon_pelanggan`, `kota`, `kecamatan`, `status`, `id_user`) VALUES
@@ -172,20 +182,20 @@ INSERT INTO `t_pelanggan` (`id_pelanggan`, `kode_pelanggan`, `nama_pelanggan`, `
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `t_pemesanan`
+-- Table structure for table `t_pemesanan`
 --
 
-CREATE TABLE IF NOT EXISTS `t_pemesanan` (
+CREATE TABLE `t_pemesanan` (
   `id_pemesanan` int(11) NOT NULL,
   `tgl_pemesanan` datetime NOT NULL,
   `id_sales` int(11) NOT NULL,
   `status` varchar(255) NOT NULL,
   `id_pegawai` int(11) DEFAULT NULL,
   `ket_status` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `t_pemesanan`
+-- Dumping data for table `t_pemesanan`
 --
 
 INSERT INTO `t_pemesanan` (`id_pemesanan`, `tgl_pemesanan`, `id_sales`, `status`, `id_pegawai`, `ket_status`) VALUES
@@ -195,39 +205,48 @@ INSERT INTO `t_pemesanan` (`id_pemesanan`, `tgl_pemesanan`, `id_sales`, `status`
 (14, '2020-11-30 10:31:06', 16, 'Telah Dikonfirmasi', 2, 'gudang'),
 (16, '2020-12-07 05:41:54', 16, 'Belum Dikonfirmasi', NULL, NULL),
 (18, '2020-12-16 04:30:45', 16, 'Belum Dikonfirmasi', NULL, NULL),
-(19, '2021-01-05 01:08:23', 34, 'Belum Dikonfirmasi', NULL, NULL);
+(19, '2021-01-05 01:08:23', 34, 'Belum Dikonfirmasi', NULL, NULL),
+(20, '2021-02-16 05:50:31', 38, 'Telah Dikonfirmasi', 2, 'gudang');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `t_penjualan`
+-- Table structure for table `t_penjualan`
 --
 
-CREATE TABLE IF NOT EXISTS `t_penjualan` (
+CREATE TABLE `t_penjualan` (
   `id_penjualan` int(11) NOT NULL,
   `id_pemesanan` int(11) NOT NULL,
   `tgl_setor` datetime NOT NULL,
   `jumlah_setor` int(11) NOT NULL,
-  `id_pegawai` int(11) NOT NULL,
-  `id_sales` int(11) DEFAULT NULL
+  `id_pegawai` int(11) DEFAULT NULL,
+  `id_sales` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `t_penjualan`
+--
+
+INSERT INTO `t_penjualan` (`id_penjualan`, `id_pemesanan`, `tgl_setor`, `jumlah_setor`, `id_pegawai`, `id_sales`) VALUES
+(3, 20, '2021-02-16 00:00:00', 64000, NULL, 38),
+(4, 20, '2021-02-16 00:00:00', 64000, NULL, 38);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `t_produk`
+-- Table structure for table `t_produk`
 --
 
-CREATE TABLE IF NOT EXISTS `t_produk` (
+CREATE TABLE `t_produk` (
   `id_produk` int(11) NOT NULL,
   `kode_produk` varchar(50) NOT NULL,
   `nama_produk` varchar(255) NOT NULL,
-  `harga_produk` int(11) NOT NULL DEFAULT '0',
+  `harga_produk` int(11) NOT NULL DEFAULT 0,
   `id_jproduk` int(11) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=57 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `t_produk`
+-- Dumping data for table `t_produk`
 --
 
 INSERT INTO `t_produk` (`id_produk`, `kode_produk`, `nama_produk`, `harga_produk`, `id_jproduk`) VALUES
@@ -285,10 +304,10 @@ INSERT INTO `t_produk` (`id_produk`, `kode_produk`, `nama_produk`, `harga_produk
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `t_sales`
+-- Table structure for table `t_sales`
 --
 
-CREATE TABLE IF NOT EXISTS `t_sales` (
+CREATE TABLE `t_sales` (
   `id_sales` int(11) NOT NULL,
   `id_kendaraan` int(11) DEFAULT NULL,
   `nik` varchar(50) DEFAULT NULL,
@@ -296,10 +315,10 @@ CREATE TABLE IF NOT EXISTS `t_sales` (
   `foto` varchar(255) DEFAULT NULL,
   `alamat` varchar(255) DEFAULT NULL,
   `id_user` int(11) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `t_sales`
+-- Dumping data for table `t_sales`
 --
 
 INSERT INTO `t_sales` (`id_sales`, `id_kendaraan`, `nik`, `nama_sales`, `foto`, `alamat`, `id_user`) VALUES
@@ -328,19 +347,19 @@ INSERT INTO `t_sales` (`id_sales`, `id_kendaraan`, `nik`, `nama_sales`, `foto`, 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `t_users`
+-- Table structure for table `t_users`
 --
 
-CREATE TABLE IF NOT EXISTS `t_users` (
+CREATE TABLE `t_users` (
   `id` int(11) NOT NULL,
   `username` varchar(50) NOT NULL,
   `password` varchar(255) NOT NULL,
   `level` varchar(255) DEFAULT NULL,
   `status` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=47 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `t_users`
+-- Dumping data for table `t_users`
 --
 
 INSERT INTO `t_users` (`id`, `username`, `password`, `level`, `status`) VALUES
@@ -460,104 +479,114 @@ ALTER TABLE `t_users`
 -- AUTO_INCREMENT for table `t_jproduk`
 --
 ALTER TABLE `t_jproduk`
-  MODIFY `id_jproduk` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=16;
+  MODIFY `id_jproduk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
 --
 -- AUTO_INCREMENT for table `t_kendaraan`
 --
 ALTER TABLE `t_kendaraan`
-  MODIFY `id_kendaraan` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=21;
+  MODIFY `id_kendaraan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+
 --
 -- AUTO_INCREMENT for table `t_pegawai`
 --
 ALTER TABLE `t_pegawai`
-  MODIFY `id_pegawai` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+  MODIFY `id_pegawai` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
 --
 -- AUTO_INCREMENT for table `t_pelanggan`
 --
 ALTER TABLE `t_pelanggan`
-  MODIFY `id_pelanggan` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=20;
+  MODIFY `id_pelanggan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+
 --
 -- AUTO_INCREMENT for table `t_pemesanan`
 --
 ALTER TABLE `t_pemesanan`
-  MODIFY `id_pemesanan` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=20;
+  MODIFY `id_pemesanan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+
 --
 -- AUTO_INCREMENT for table `t_penjualan`
 --
 ALTER TABLE `t_penjualan`
-  MODIFY `id_penjualan` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_penjualan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
 --
 -- AUTO_INCREMENT for table `t_produk`
 --
 ALTER TABLE `t_produk`
-  MODIFY `id_produk` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=57;
+  MODIFY `id_produk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
+
 --
 -- AUTO_INCREMENT for table `t_sales`
 --
 ALTER TABLE `t_sales`
-  MODIFY `id_sales` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=27;
+  MODIFY `id_sales` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+
 --
 -- AUTO_INCREMENT for table `t_users`
 --
 ALTER TABLE `t_users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=47;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+
 --
--- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
+-- Constraints for dumped tables
 --
 
 --
--- Ketidakleluasaan untuk tabel `t_detail_pemesanan`
+-- Constraints for table `t_detail_pemesanan`
 --
 ALTER TABLE `t_detail_pemesanan`
   ADD CONSTRAINT `t_detail_pemesanan_ibfk_1` FOREIGN KEY (`id_pemesanan`) REFERENCES `t_pemesanan` (`id_pemesanan`),
   ADD CONSTRAINT `t_detail_pemesanan_ibfk_2` FOREIGN KEY (`id_produk`) REFERENCES `t_produk` (`id_produk`);
 
 --
--- Ketidakleluasaan untuk tabel `t_detail_penjualan`
+-- Constraints for table `t_detail_penjualan`
 --
 ALTER TABLE `t_detail_penjualan`
   ADD CONSTRAINT `t_detail_penjualan_ibfk_1` FOREIGN KEY (`id_produk`) REFERENCES `t_produk` (`id_produk`),
   ADD CONSTRAINT `t_detail_penjualan_ibfk_2` FOREIGN KEY (`id_penjualan`) REFERENCES `t_penjualan` (`id_penjualan`);
 
 --
--- Ketidakleluasaan untuk tabel `t_pegawai`
+-- Constraints for table `t_pegawai`
 --
 ALTER TABLE `t_pegawai`
   ADD CONSTRAINT `t_pegawai_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `t_users` (`id`);
 
 --
--- Ketidakleluasaan untuk tabel `t_pelanggan`
+-- Constraints for table `t_pelanggan`
 --
 ALTER TABLE `t_pelanggan`
   ADD CONSTRAINT `t_pelanggan_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `t_users` (`id`);
 
 --
--- Ketidakleluasaan untuk tabel `t_pemesanan`
+-- Constraints for table `t_pemesanan`
 --
 ALTER TABLE `t_pemesanan`
   ADD CONSTRAINT `t_pemesanan_ibfk_1` FOREIGN KEY (`id_pegawai`) REFERENCES `t_users` (`id`),
   ADD CONSTRAINT `t_pemesanan_ibfk_3` FOREIGN KEY (`id_sales`) REFERENCES `t_users` (`id`);
 
 --
--- Ketidakleluasaan untuk tabel `t_penjualan`
+-- Constraints for table `t_penjualan`
 --
 ALTER TABLE `t_penjualan`
   ADD CONSTRAINT `t_penjualan_ibfk_1` FOREIGN KEY (`id_pegawai`) REFERENCES `t_users` (`id`),
   ADD CONSTRAINT `t_penjualan_ibfk_2` FOREIGN KEY (`id_pemesanan`) REFERENCES `t_pemesanan` (`id_pemesanan`),
-  ADD CONSTRAINT `t_penjualan_ibfk_3` FOREIGN KEY (`id_sales`) REFERENCES `t_sales` (`id_sales`);
+  ADD CONSTRAINT `t_penjualan_ibfk_3` FOREIGN KEY (`id_sales`) REFERENCES `t_users` (`id`);
 
 --
--- Ketidakleluasaan untuk tabel `t_produk`
+-- Constraints for table `t_produk`
 --
 ALTER TABLE `t_produk`
   ADD CONSTRAINT `t_produk_ibfk_1` FOREIGN KEY (`id_jproduk`) REFERENCES `t_jproduk` (`id_jproduk`);
 
 --
--- Ketidakleluasaan untuk tabel `t_sales`
+-- Constraints for table `t_sales`
 --
 ALTER TABLE `t_sales`
   ADD CONSTRAINT `t_sales_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `t_users` (`id`),
   ADD CONSTRAINT `t_sales_ibfk_2` FOREIGN KEY (`id_kendaraan`) REFERENCES `t_kendaraan` (`id_kendaraan`);
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
