@@ -29,6 +29,13 @@ function tampil_jproduk()
     return $result;
 }
 
+function tampil_produk()
+{
+    global $conn;
+    $result = mysqli_query($conn, "SELECT * FROM t_produk");
+    return $result;
+}
+
 function hapus_pemesanan($id)
 {
     global $conn;

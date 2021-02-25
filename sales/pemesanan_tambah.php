@@ -14,7 +14,7 @@
 
   include_once('_partials/atas.php');
   include_once('_partials/kiri.php');
-  $jenisproduk = tampil_jproduk();
+  $jenisproduk = tampil_produk();
   ?>
 
   <div class="content-wrapper">
