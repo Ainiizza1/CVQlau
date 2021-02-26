@@ -120,7 +120,7 @@
                       <div class="card-footer">
                         <input type="hidden" name="id_sales" value="<?php echo $_SESSION['id'] ?>">
                         <input name="id_pemesanan" type="hidden" class="form-control" min='0' required value="<?= $_POST['pesanan'] ?>">
-                        <input name="tgl_setor" type="hidden" class="form-control" min='0' required value="<?= date('Y-m-d'); ?>">
+                        <input name="tgl_setor" type="hidden" class="form-control" min='0' required value="<?= date('Y-m-d H:i:s'); ?>">
                         <button type="submit" class="btn btn-primary" name="tambah">Tambah</button>
                         <button type="submit" class="btn btn-primary" name="reset" id="btn-reset-form">Reset</button>
                       </div>

@@ -58,7 +58,7 @@
                   </tr>
                   <tr>
                     <th>Total Setor</th>
-                    <td>: <?=$pem['jumlah_setor']?></td>
+                    <td>:Rp. <?=$pem['jumlah_setor']?></td>
                   </tr>
                 </table>
                 <br>

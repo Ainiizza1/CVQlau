@@ -98,7 +98,7 @@ $total_penjualan = total_penjualan();
           <!-- small box -->
           <div class="small-box bg-warning">
             <div class="inner">
-              <h3><?php echo $jumlah_pemesanan ?></h3>
+              <h3><?php echo $total_pelanggan ?></h3>
               <p>Total Pelanggan</p>
             </div>
             <div class="icon">

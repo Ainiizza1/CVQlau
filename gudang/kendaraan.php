@@ -55,7 +55,7 @@ include_once('_partials/kiri.php');
                     <th>Nama</th>
                     <th>Plat</th>
                     <th>Warna</th>
-                    <th>Aksi</th>
+                    <!-- <th>Aksi</th> -->
                   </tr>
                 </thead>
                 <tbody>
@@ -68,10 +68,10 @@ include_once('_partials/kiri.php');
                       <td><?php echo $pecah['nama_kendaraan']; ?></td>
                       <td><?php echo $pecah['plat']; ?></td>
                       <td><?php echo $pecah['warna']; ?></td>
-                      <td>
+                      <!-- <td>
                         <a href="kendaraan_hapus.php?id=<?= $pecah['id_kendaraan']; ?>" class="btn-danger btn">Hapus</a>
                         <a href="kendaraan_ubah.php?id=<?= $pecah['id_kendaraan']; ?>" class="btn btn-warning">Ubah</a>
-                      </td>
+                      </td> -->
                     </tr>
                     <?php $nomor++ ?>
                   <?php } ?>

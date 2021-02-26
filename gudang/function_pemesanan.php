@@ -62,6 +62,16 @@ function total_produk()
     
 }
 
+function total_sales()
+{
+    global $conn;
+    $query = "SELECT count(*) as sales FROM t_sales";
+    $result = mysqli_query($conn, $query);
+    $row = mysqli_fetch_assoc($result);
+    $sales = $row['sales'];
+    return $sales;
+    
+}
 
 function total_penjualan()
 {
@@ -71,17 +81,6 @@ function total_penjualan()
     $row = mysqli_fetch_assoc($result);
     $penjualan = $row['penjualan'];
     return $penjualan;
-    
-}
-
-function total_sales()
-{
-    global $conn;
-    $query = "SELECT count(*) as sales FROM t_sales";
-    $result = mysqli_query($conn, $query);
-    $row = mysqli_fetch_assoc($result);
-    $sales = $row['sales'];
-    return $sales;
     
 }
 

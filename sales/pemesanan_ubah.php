@@ -65,7 +65,6 @@ $pem = $pemesanan->fetch_assoc();
               <br>
               <form method="post">
                 <div class="card-body ">
-
                   <?php while ($pecah = $detail_pemesanan->fetch_assoc()) { ?>
                     <div class="row">
                       <div class="form-group col-8">
@@ -74,59 +73,59 @@ $pem = $pemesanan->fetch_assoc();
                           <option selected disabled>Silahkan Dipilih</option>
                           <?php foreach ($jenisproduk as $jproduk) : ?>
                             <option <?= ($pecah['id_produk'] == $jproduk['id_produk']) ? 'selected' : '' ?> value="<?php echo $jproduk['id_produk'] ?>"><?php echo $jproduk['nama_produk'] ?>
-                            </option>
-                          <?php endforeach ?>
-                        </select>
-                        <input name="namaproduk[]" type="hidden" class="form-control" value="<?= $pecah['id_produk'] ?>" required>
-                        <input name="id_pemesanan[]" type="hidden" class="form-control" value="<?= $pecah['id_pemesanan'] ?>" required>
-                      </div>
-                      <div class="form-group col-4">
-                        <label>JUMLAH PRODUK</label>
-                        <input name="jumlah[]" type="number" class="form-control" value="<?= $pecah['qty_ambil'] ?>" required>
-                      </div>
+                          </option>
+                        <?php endforeach ?>
+                      </select>
+                      <input name="namaproduk[]" type="hidden" class="form-control" value="<?= $pecah['id_produk'] ?>" required>
+                      <input name="id_pemesanan[]" type="hidden" class="form-control" value="<?= $pecah['id_pemesanan'] ?>" required>
                     </div>
-                    <div id="insert-form2"></div>
-                  <?php } ?>
-                </div>
-                <!-- /.card-body -->
+                    <div class="form-group col-4">
+                      <label>JUMLAH PRODUK</label>
+                      <input name="jumlah[]" type="number" class="form-control" value="<?= $pecah['qty_ambil'] ?>" required>
+                    </div>
+                  </div>
+                  <div id="insert-form2"></div>
+                <?php } ?>
+              </div>
+              <!-- /.card-body -->
 
-                <div class="card-footer">
-                  <button type="submit" class="btn btn-primary" name="tambah">Simpan</button>
-                  <button type="submit" class="btn btn-primary" name="reset" id="btn-reset-form">Reset</button>
-                </div>
-              </form>
+              <div class="card-footer">
+                <button type="submit" class="btn btn-primary" name="tambah">Simpan</button>
+                <button type="submit" class="btn btn-primary" name="reset" id="btn-reset-form">Reset</button>
+              </div>
+            </form>
 
-              <?php
-              if (isset($_POST['tambah'])) {
+            <?php
+            if (isset($_POST['tambah'])) {
                 // var_dump($_POST);die();
-                $jumlah_data = count($_POST['namaproduk']);
-                for ($i = 0; $i < $jumlah_data; $i++) {
-                  $id_pemesanan = $_POST['id_pemesanan'][$i];
-                  $namaproduk = $_POST['namaproduk'][$i];
-                  $jumlah = $_POST['jumlah'][$i];
+              $jumlah_data = count($_POST['namaproduk']);
+              for ($i = 0; $i < $jumlah_data; $i++) {
+                $id_pemesanan = $_POST['id_pemesanan'][$i];
+                $namaproduk = $_POST['namaproduk'][$i];
+                $jumlah = $_POST['jumlah'][$i];
 
-                  $ambil = $conn->query("UPDATE t_detail_pemesanan SET qty_ambil = '$jumlah' WHERE id_pemesanan = '$id_pemesanan' AND id_produk = '$namaproduk'");
-                  if ($ambil == false) {
-                    echo "Error Detail : " . mysqli_error($conn);
-                  }
+                $ambil = $conn->query("UPDATE t_detail_pemesanan SET qty_ambil = '$jumlah' WHERE id_pemesanan = '$id_pemesanan' AND id_produk = '$namaproduk'");
+                if ($ambil == false) {
+                  echo "Error Detail : " . mysqli_error($conn);
                 }
+              }
 
                 // var_dump(mysql_error());die();
 
-                echo "<button type='button' class='btn btn-success toastrDefaultSuccess'>Data Pemesanan Berhasil Diubah</button>";
-                echo "<script> location='pemesanan.php'; </script>";
-              }
+              echo "<button type='button' class='btn btn-success toastrDefaultSuccess'>Data Pemesanan Berhasil Diubah</button>";
+              echo "<script> location='pemesanan.php'; </script>";
+            }
 
-              ?>
+            ?>
 
-            </div>
           </div>
-        </section>
-      </div>
-      <!-- /.row (main row) -->
-    </div><!-- /.container-fluid -->
-  </section>
-  <!-- /.content -->
+        </div>
+      </section>
+    </div>
+    <!-- /.row (main row) -->
+  </div><!-- /.container-fluid -->
+</section>
+<!-- /.content -->
 </div>
 
 <?php include_once('_partials/bawah.php'); ?>
