@@ -13,9 +13,9 @@
     $produk = $_POST['produk'];
     $tanggal = $_POST['tanggal'];
     $last_date = new DateTime($tanggal);
-    $last_date->modify('-7 day');
+    $last_date->modify('-6 day');
     $tanggal = $last_date->format('Y-m-d');
-    $ambil = $conn->query("SELECT * FROM t_penjualan JOIN t_detail_penjualan ON t_detail_penjualan.id_penjualan = t_penjualan.id_penjualan WHERE DaTE(t_penjualan.tgl_setor) = '$tanggal' AND t_detail_penjualan.id_produk = $produk");
+    $ambil = $conn->query("SELECT * FROM t_penjualan JOIN t_detail_penjualan ON t_detail_penjualan.id_penjualan = t_penjualan.id_penjualan WHERE DaTE(t_penjualan.tgl_setor) <= '$tanggal' AND t_detail_penjualan.id_produk = $produk");
   }
   ?>
 
