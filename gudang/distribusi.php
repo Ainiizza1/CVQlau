@@ -8,14 +8,14 @@
   include_once('_partials/atas.php');
   include_once('_partials/kiri.php');
 
-  $ambil = $conn->query("SELECT * FROM t_penjualan JOIN t_users ON t_penjualan.id_sales = t_users.id JOIN t_sales ON t_sales.id_user = t_users.id WHERE level='sales'");
+  $ambil = $conn->query("SELECT t_penjualan.id_penjualan,tgl_setor,SUM(t_detail_penjualan.qty_terjual) jumlah_setor FROM t_penjualan JOIN t_detail_penjualan ON t_penjualan.id_penjualan = t_detail_penjualan.id_penjualan GROUP BY t_detail_penjualan.id_penjualan");
   if (isset($_POST['kirim'])) {
-    $produk = $_POST['produk'];
+    $produk1 = explode('#', $_POST['produk']);
     $tanggal = $_POST['tanggal'];
     $last_date = new DateTime($tanggal);
     $last_date->modify('-6 day');
     $tanggal = $last_date->format('Y-m-d');
-    $ambil = $conn->query("SELECT * FROM t_penjualan JOIN t_detail_penjualan ON t_detail_penjualan.id_penjualan = t_penjualan.id_penjualan WHERE DaTE(t_penjualan.tgl_setor) <= '$tanggal' AND t_detail_penjualan.id_produk = $produk");
+    $ambil = $conn->query("SELECT t_penjualan.id_penjualan,tgl_setor,SUM(t_detail_penjualan.qty_terjual) jumlah_setor FROM t_penjualan JOIN t_detail_penjualan ON t_penjualan.id_penjualan = t_detail_penjualan.id_penjualan WHERE DATE(t_penjualan.tgl_setor) <= '$tanggal' AND t_detail_penjualan.id_produk = $produk1[0] GROUP BY t_detail_penjualan.id_penjualan");
   }
   ?>
 
@@ -64,7 +64,7 @@
                         <?php
                         $produk = $conn->query("SELECT * FROM t_produk");
                         while ($pecah = $produk->fetch_assoc()) { ?>
-                          <option value="<?= $pecah['id_produk']; ?>"><?= $pecah['nama_produk']; ?></option>
+                          <option value="<?= $pecah['id_produk']; ?>#<?= $pecah['nama_produk']; ?>"><?= $pecah['nama_produk']; ?></option>
                         <?php } ?>
                       </select>
                     </div>
@@ -77,12 +77,15 @@
                     </div>
                   </div>
                 </form>
+                <?php if (isset($produk1[1])) { ?>
+                  <h6 class="mb-3">Jenis Roti : <b><?= $produk1[1]; ?></b></h6>
+                <?php } ?>
                 <table id="example1" class="table table-bordered table-hover">
                   <thead>
                     <tr>
                       <th width="20px">No</th>
                       <th>Tanggal</th>
-                      <th>Jumlah Setoran</th>
+                      <th>Jumlah Produk</th>
                     </tr>
                   </thead>
                   <tbody>
