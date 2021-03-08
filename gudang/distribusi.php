@@ -12,10 +12,7 @@
   $ambil = $conn->query("SELECT t_penjualan.id_penjualan,tgl_setor,SUM(t_detail_penjualan.qty_terjual) jumlah_setor FROM t_penjualan JOIN t_detail_penjualan ON t_penjualan.id_penjualan = t_detail_penjualan.id_penjualan WHERE DATE(t_penjualan.tgl_setor) <= '$tanggal' GROUP BY DATE(t_penjualan.tgl_setor) ORDER BY t_penjualan.tgl_setor DESC LIMIT 6");
   if (isset($_POST['kirim'])) {
     $produk1 = explode('#', $_POST['produk']);
-    $tanggal = $_POST['tanggal'];
-    $last_date = new DateTime($tanggal);
-    $last_date->modify('-6 day');
-    $tanggal = $last_date->format('Y-m-d');
+    $tanggal = date('Y-m-d', strtotime($_POST['tanggal'] . '-1 day'));
     $ambil = $conn->query("SELECT t_penjualan.id_penjualan,tgl_setor,SUM(t_detail_penjualan.qty_terjual) jumlah_setor FROM t_penjualan JOIN t_detail_penjualan ON t_penjualan.id_penjualan = t_detail_penjualan.id_penjualan WHERE DATE(t_penjualan.tgl_setor) <= '$tanggal' AND t_detail_penjualan.id_produk = $produk1[0] GROUP BY t_detail_penjualan.id_penjualan ORDER BY t_penjualan.tgl_setor DESC LIMIT 6");
   }
   $baru = array();
